@@ -10,6 +10,12 @@ namespace ConsoleApp1
     {
         int bid = 0;
         SerialPort portCOM = new SerialPort();
+        Machine machine;
+
+        public void setMachine(Machine machine)
+        {
+            this.machine = machine;
+        }
 
         public void initCOM()
         {
@@ -58,7 +64,10 @@ namespace ConsoleApp1
 
         private void DataRecivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            Console.WriteLine(portCOM.ReadExisting());
+            // Console.WriteLine(portCOM.ReadExisting());
+            byte[] arr = new byte[5];
+            portCOM.Read(arr,0,5);
+            machine.messageHandler(arr);
         }
 
         public void sendMessage(byte[] byteArr, int length) => portCOM.Write(byteArr, 0,length);

@@ -21,13 +21,13 @@
         }
 
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Engine1 = new System.Windows.Forms.ProgressBar();
             this.Engine2 = new System.Windows.Forms.ProgressBar();
             this.Engine3 = new System.Windows.Forms.ProgressBar();
@@ -41,11 +41,19 @@
             this.Engine2State = new System.Windows.Forms.Label();
             this.Engine3State = new System.Windows.Forms.Label();
             this.Engine4State = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.gyroscop = new System.Windows.Forms.PictureBox();
+            this.Throtle = new System.Windows.Forms.ProgressBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ThrotleState = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
             this.SuspendLayout();
             // 
             // Engine1
             // 
+            this.Engine1.ForeColor = System.Drawing.Color.Red;
             this.Engine1.Location = new System.Drawing.Point(12, 25);
+            this.Engine1.MarqueeAnimationSpeed = 0;
             this.Engine1.Name = "Engine1";
             this.Engine1.Size = new System.Drawing.Size(237, 23);
             this.Engine1.TabIndex = 0;
@@ -53,6 +61,7 @@
             // Engine2
             // 
             this.Engine2.Location = new System.Drawing.Point(278, 25);
+            this.Engine2.MarqueeAnimationSpeed = 0;
             this.Engine2.Name = "Engine2";
             this.Engine2.Size = new System.Drawing.Size(237, 23);
             this.Engine2.TabIndex = 1;
@@ -60,6 +69,7 @@
             // Engine3
             // 
             this.Engine3.Location = new System.Drawing.Point(12, 72);
+            this.Engine3.MarqueeAnimationSpeed = 0;
             this.Engine3.Name = "Engine3";
             this.Engine3.Size = new System.Drawing.Size(237, 23);
             this.Engine3.TabIndex = 2;
@@ -67,6 +77,7 @@
             // Engine4
             // 
             this.Engine4.Location = new System.Drawing.Point(278, 72);
+            this.Engine4.MarqueeAnimationSpeed = 0;
             this.Engine4.Name = "Engine4";
             this.Engine4.Size = new System.Drawing.Size(237, 23);
             this.Engine4.TabIndex = 3;
@@ -156,11 +167,56 @@
             this.Engine4State.TabIndex = 12;
             this.Engine4State.Text = "0%";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 200;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // gyroscop
+            // 
+            this.gyroscop.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gyroscop.Location = new System.Drawing.Point(12, 123);
+            this.gyroscop.Name = "gyroscop";
+            this.gyroscop.Size = new System.Drawing.Size(250, 250);
+            this.gyroscop.TabIndex = 13;
+            this.gyroscop.TabStop = false;
+            // 
+            // Throtle
+            // 
+            this.Throtle.Location = new System.Drawing.Point(278, 132);
+            this.Throtle.MarqueeAnimationSpeed = 0;
+            this.Throtle.Name = "Throtle";
+            this.Throtle.Size = new System.Drawing.Size(237, 26);
+            this.Throtle.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(275, 116);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Throtle";
+            // 
+            // ThrotleState
+            // 
+            this.ThrotleState.AutoSize = true;
+            this.ThrotleState.Location = new System.Drawing.Point(519, 132);
+            this.ThrotleState.Name = "ThrotleState";
+            this.ThrotleState.Size = new System.Drawing.Size(21, 13);
+            this.ThrotleState.TabIndex = 16;
+            this.ThrotleState.Text = "0%";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ThrotleState);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Throtle);
+            this.Controls.Add(this.gyroscop);
             this.Controls.Add(this.Engine4State);
             this.Controls.Add(this.Engine3State);
             this.Controls.Add(this.Engine2State);
@@ -174,9 +230,11 @@
             this.Controls.Add(this.Engine3);
             this.Controls.Add(this.Engine2);
             this.Controls.Add(this.Engine1);
+            this.KeyPreview = true;
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "Dron-APP";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ThrotleHendler);
+            ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +255,10 @@
         private System.Windows.Forms.Label Engine2State;
         private System.Windows.Forms.Label Engine3State;
         private System.Windows.Forms.Label Engine4State;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox gyroscop;
+        private System.Windows.Forms.ProgressBar Throtle;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label ThrotleState;
     }
 }
