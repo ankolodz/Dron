@@ -60,8 +60,10 @@ namespace ConsoleApp1
             Bitmap flag = new Bitmap(250, 250);
             Graphics flagGraphics = Graphics.FromImage(flag);
 
+            
             flagGraphics.FillRectangle(Brushes.Black, x, 0, 5, 250);
             flagGraphics.FillRectangle(Brushes.Black, 0, y, 250, 5);
+            flagGraphics.FillRectangle(Brushes.Red, 123, 123, 9, 9);
 
             gyroscop.Image = flag;
             Refresh();
@@ -87,8 +89,10 @@ namespace ConsoleApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
-            machine.refresch();
+
+            SetThrotle(machine.throtle.getThrotle());
+            SetEnginePower(machine.engine.getEngineState());
+            SetGyroscope(machine.gyroscope.getX(), machine.gyroscope.getY());
             
         }
     };

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Gyroscope : Unit
+    public class Gyroscope : Unit
     {
         private byte type = 2;
         private int x = 125;
@@ -19,8 +19,8 @@ namespace ConsoleApp1
 
         public override void readMessage(byte[] message)
         {
-            int x = message[1];
-            int y = message[2];
+            x = message[1];
+            y = message[2];
 
         }
         public int getX()

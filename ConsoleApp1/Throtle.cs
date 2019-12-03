@@ -37,6 +37,10 @@ namespace ConsoleApp1
                 this.throtle -= 5;
             base.SendComend(uart, throtle, 0, 0, 0);
         }
+        public void sendThrotle()
+        {
+            base.SendComend(uart, throtle, 0, 0, 0);
+        }
         public void STOP()
         {
             throtle = 0;

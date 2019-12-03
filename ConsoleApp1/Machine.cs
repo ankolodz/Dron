@@ -9,28 +9,21 @@ namespace ConsoleApp1
     public class Machine
     {
         private UART myUART;
-        private Engine engine;
-        private Gyroscope gyroscope;
+        public Engine engine;
+        public Gyroscope gyroscope;
         public Throtle throtle;
-        private Form1 GUI;
 
-        public void refresch()
-        {
-            GUI.SetEnginePower(engine.getEngineState());
-            GUI.SetGyroscope(gyroscope.getX(), gyroscope.getY());
-            GUI.SetThrotle(throtle.getThrotle());
-        }
 
-        public Machine (UART uart,Form1 GUI)
+        public Machine (UART uart)
         {
             this.myUART = uart;
             engine = new Engine(uart);
             gyroscope = new Gyroscope();
             throtle = new Throtle(uart);
-            this.GUI = GUI;
         }
         public void messageHandler  (byte[] message)
         {
+            //Console.WriteLine(message[0]);
             switch (message[0])
             {
                 case 1:

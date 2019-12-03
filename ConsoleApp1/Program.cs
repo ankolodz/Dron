@@ -20,8 +20,9 @@ namespace ConsoleApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Machine machine = new Machine(myUart);
             Form1 form = new Form1();
-            Machine machine = new Machine(myUart, form);
+            
             form.setMachine(machine);
             myUart.setMachine(machine);
 
