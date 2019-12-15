@@ -55,14 +55,22 @@ namespace ConsoleApp1
         }
         public void SetGyroscope(int x, int y)
         {
-
+            x = 255 - x;
+            
             //this.Controls.Add(gyroscop);
-            Bitmap flag = new Bitmap(250, 250);
+            Bitmap flag = new Bitmap(255, 255);
             Graphics flagGraphics = Graphics.FromImage(flag);
 
-            
-            flagGraphics.FillRectangle(Brushes.Black, x, 0, 5, 250);
-            flagGraphics.FillRectangle(Brushes.Black, 0, y, 250, 5);
+            //horyzont
+            flagGraphics.FillRectangle(Brushes.LightSkyBlue, 0, 0, 255, 255);
+            flagGraphics.FillRectangle(Brushes.Brown, 0, x, 255, 255);
+
+            //wskaźniki osY
+           // flagGraphics.FillRectangle(Brushes.Black, 63, x-, 255, 255);
+           // flagGraphics.FillRectangle(Brushes.Black, 0, x, 255, 255);
+
+            // flagGraphics.FillRectangle(Brushes.Black, x, 0, 5, 250);
+            //flagGraphics.FillRectangle(Brushes.Black, 0, y, 250, 5);
             flagGraphics.FillRectangle(Brushes.Red, 123, 123, 9, 9);
 
             gyroscop.Image = flag;
@@ -79,12 +87,89 @@ namespace ConsoleApp1
         {
             machine.STOP();
             machine.throtle.STOP();
+
         }
+
+
+        private void Override_Click(object sender, EventArgs e)
+        {
+            if (machine.engine.getManualState())
+            {
+                machine.engine.manualOFF();
+                OverideControl.Value = 0;
+            }
+            else
+            {
+                machine.engine.manualON();
+                OverideControl.Value = 100;
+            }
+
+        }
+
         private void ThrotleHendler(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("Key pressed");
-            if (e.KeyCode == Keys.A)  machine.throtle.upThrotle();
-            else if (e.KeyCode == Keys.Z) machine.throtle.downThrotle();
+            if (machine.engine.getManualState())
+                switch (e.KeyCode)
+                {
+                    case Keys.A:
+                        machine.throtle.upThrotle();
+                        break;
+                    case Keys.Z:
+                        machine.throtle.downThrotle();
+                        break;
+                    case Keys.D1:
+                        machine.engine.upEnginePower(5);
+                        break;
+                    case Keys.D2:
+                        machine.engine.upEnginePower(1);
+                        break;
+                    case Keys.D3:
+                        machine.engine.upEnginePower(2);
+                        break;
+                    case Keys.D4:
+                        machine.engine.upEnginePower(3);
+                        break;
+                    case Keys.D5:
+                        machine.engine.upEnginePower(4);
+                        break;
+
+                    case Keys.Q:
+                        machine.engine.downEnginePower(5);
+                        break;
+                    case Keys.W:
+                        machine.engine.downEnginePower(1);
+                        break;
+                    case Keys.E:
+                        machine.engine.downEnginePower(2);
+                        break;
+                    case Keys.R:
+                        machine.engine.downEnginePower(3);
+                        break;
+                    case Keys.T:
+                        machine.engine.downEnginePower(4);
+                        break;
+                    default:
+                        machine.engine.STOP();
+                        break;
+                }
+            else
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.A:
+                        machine.throtle.upThrotle();
+                        break;
+                    case Keys.Z:
+                        machine.throtle.downThrotle();
+                        break;
+
+                }
+            }
+
+            SetThrotle(machine.throtle.getThrotle());
+            SetEnginePower(machine.engine.getEngineState());
+            System.Threading.Thread.Sleep(100);
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -93,6 +178,11 @@ namespace ConsoleApp1
             SetThrotle(machine.throtle.getThrotle());
             SetEnginePower(machine.engine.getEngineState());
             SetGyroscope(machine.gyroscope.getX(), machine.gyroscope.getY());
+
+            if (!machine.engine.getManualState())
+                machine.throtle.sendThrotleStatr();
+      
+                
             
         }
     };

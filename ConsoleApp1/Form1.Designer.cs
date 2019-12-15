@@ -46,6 +46,8 @@
             this.Throtle = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.ThrotleState = new System.Windows.Forms.Label();
+            this.OverideControl = new System.Windows.Forms.ProgressBar();
+            this.Overide = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,11 +210,31 @@
             this.ThrotleState.TabIndex = 16;
             this.ThrotleState.Text = "0%";
             // 
+            // OverideControl
+            // 
+            this.OverideControl.Location = new System.Drawing.Point(580, 124);
+            this.OverideControl.Name = "OverideControl";
+            this.OverideControl.Size = new System.Drawing.Size(36, 34);
+            this.OverideControl.TabIndex = 17;
+            this.OverideControl.Click += new System.EventHandler(this.Override_Click);
+            // 
+            // Overide
+            // 
+            this.Overide.AutoSize = true;
+            this.Overide.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Overide.Location = new System.Drawing.Point(633, 132);
+            this.Overide.Name = "Overide";
+            this.Overide.Size = new System.Drawing.Size(68, 20);
+            this.Overide.TabIndex = 18;
+            this.Overide.Text = "Override";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Overide);
+            this.Controls.Add(this.OverideControl);
             this.Controls.Add(this.ThrotleState);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Throtle);
@@ -260,5 +282,7 @@
         private System.Windows.Forms.ProgressBar Throtle;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label ThrotleState;
+        private System.Windows.Forms.ProgressBar OverideControl;
+        private System.Windows.Forms.Label Overide;
     }
 }

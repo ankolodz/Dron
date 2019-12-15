@@ -14,8 +14,9 @@ namespace ConsoleApp1
         private byte moc_P_P = 0;
         private byte moc_T_L = 0;
         private byte moc_T_P = 0;
-        private static byte N = 5;
+        private static byte N = 1;
         UART myUart;
+        private bool manual;
        // Form1 GUI;
 
         public Engine(UART uart) {
@@ -151,5 +152,9 @@ namespace ConsoleApp1
             }
            // GUI.SetEnginePower(moc_P_L, moc_P_P, moc_T_L, moc_T_P);
         }
+        public void manualON() { manual = true; }
+        public void manualOFF() { manual = false; }
+
+        public bool getManualState() { return manual; }
     };
 }

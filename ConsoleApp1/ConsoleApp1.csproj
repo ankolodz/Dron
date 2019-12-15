@@ -75,6 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ClientSocket.cs" />
     <Compile Include="Throtle.cs" />
     <Compile Include="UART.cs" />
     <Compile Include="Unit.cs" />

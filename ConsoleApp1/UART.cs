@@ -22,7 +22,7 @@ namespace ConsoleApp1
 
             portCOM.ReadTimeout = 500;
             portCOM.WriteTimeout = 500;
-            portCOM.BaudRate = 9600;
+            portCOM.BaudRate = 19200;
             portCOM.DataBits = 8;
             portCOM.StopBits = StopBits.One;
 
