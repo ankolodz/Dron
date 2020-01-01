@@ -23,7 +23,7 @@ namespace ConsoleApp1
         }
         public void messageHandler  (byte[] message)
         {
-            //Console.WriteLine(message[0]);
+            Console.WriteLine(message[0]+" "+message[1]);
             switch (message[0])
             {
                 case 1:

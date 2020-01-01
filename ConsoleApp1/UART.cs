@@ -66,6 +66,11 @@ namespace ConsoleApp1
         {
             // Console.WriteLine(portCOM.ReadExisting());
             byte[] arr = new byte[5];
+            while(portCOM.BytesToRead < 5)
+            {
+                Thread.Sleep(1);
+            }
+
             portCOM.Read(arr,0,5);
             machine.messageHandler(arr);
         }
