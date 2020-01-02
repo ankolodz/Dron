@@ -72,7 +72,24 @@ namespace ConsoleApp1
             }
 
             portCOM.Read(arr,0,5);
-            machine.messageHandler(arr);
+            try
+            {
+               machine.messageHandler(arr);
+            }
+            catch
+            {
+                try
+                {
+                    Console.WriteLine("Błąd ramki");
+                    portCOM.ReadExisting();
+                }
+                catch
+                {
+                    Console.WriteLine("Nieudane czyszczenie bufora");
+                    DebugMode.addLog("Error UART, cleaning buffer failed");
+                }
+            }
+            
         }
 
         public void sendMessage(byte[] byteArr, int length) => portCOM.Write(byteArr, 0,length);

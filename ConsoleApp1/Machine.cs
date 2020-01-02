@@ -32,6 +32,9 @@ namespace ConsoleApp1
                 case 2:
                     gyroscope.readMessage(message);
                     break;
+                default:
+                    Exception incorectMessageType = new Exception("Błąd typu ramki");
+                    throw incorectMessageType;
             }
         }
         public void STOP()

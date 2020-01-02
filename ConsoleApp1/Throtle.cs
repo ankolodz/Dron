@@ -28,13 +28,13 @@ namespace ConsoleApp1
         }
         public void upThrotle()
         {   if (throtle<255)
-                this.throtle +=1;
+                this.throtle +=5;
             base.SendComend(uart, throtle, 0, 0, 0);
         }
         public void downThrotle()
         {
             if (throtle > 0)
-                this.throtle -= 1;
+                this.throtle -= 5;
             base.SendComend(uart, throtle, 0, 0, 0);
         }
         public void sendThrotle()

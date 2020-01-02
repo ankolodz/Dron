@@ -14,7 +14,7 @@ namespace ConsoleApp1
         private byte moc_P_P = 0;
         private byte moc_T_L = 0;
         private byte moc_T_P = 0;
-        private static byte N = 1;
+        private static byte N = 5;
         UART myUart;
         private bool manual;
        // Form1 GUI;
