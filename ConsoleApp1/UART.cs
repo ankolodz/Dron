@@ -65,13 +65,13 @@ namespace ConsoleApp1
         private void DataRecivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             // Console.WriteLine(portCOM.ReadExisting());
-            byte[] arr = new byte[5];
-            while(portCOM.BytesToRead < 5)
+            byte[] arr = new byte[messageSize()];
+            while(portCOM.BytesToRead < messageSize())
             {
                 Thread.Sleep(1);
             }
 
-            portCOM.Read(arr,0,5);
+            portCOM.Read(arr,0, messageSize());
             try
             {
                machine.messageHandler(arr);
@@ -91,6 +91,8 @@ namespace ConsoleApp1
             }
             
         }
+        public static int messageSize(){
+            return 6;}
 
         public void sendMessage(byte[] byteArr, int length) => portCOM.Write(byteArr, 0,length);
     }

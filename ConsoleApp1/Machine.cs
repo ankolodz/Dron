@@ -24,6 +24,15 @@ namespace ConsoleApp1
         public void messageHandler  (byte[] message)
         {
             Console.WriteLine(message[0]+" "+message[1]);
+            int suma = 0;
+            for (int i = 0; i < UART.messageSize()-1; i++)
+                suma += message[i];
+            if  (suma % 255 != message[5])
+            {
+                Exception incorectMessageControlSum = new Exception("Błąd sumy kontrolnej");
+                throw incorectMessageControlSum;
+            }
+
             switch (message[0])
             {
                 case 1:
