@@ -12,6 +12,7 @@ namespace ConsoleApp1
         private byte type = 128;
         private byte throtle = 0;
         UART uart;
+        private byte step = 5;
 
         public Throtle(UART u)
         {
@@ -28,13 +29,13 @@ namespace ConsoleApp1
         }
         public void upThrotle()
         {   if (throtle<255)
-                this.throtle +=5;
+                this.throtle +=step;
             base.SendComend(uart, throtle, 0, 0, 0);
         }
         public void downThrotle()
         {
             if (throtle > 0)
-                this.throtle -= 5;
+                this.throtle -= step;
             base.SendComend(uart, throtle, 0, 0, 0);
         }
         public void sendThrotle()
