@@ -8,18 +8,18 @@ namespace ConsoleApp1
 {
     public class Machine
     {
-        private UART myUART;
+        private Client client;
         public Engine engine;
         public Gyroscope gyroscope;
         public Throtle throtle;
 
 
-        public Machine (UART uart)
+        public Machine (Client client)
         {
-            this.myUART = uart;
-            engine = new Engine(uart);
+            this.client = client;
+            engine = new Engine(client);
             gyroscope = new Gyroscope();
-            throtle = new Throtle(uart);
+            throtle = new Throtle(client);
         }
         public void messageHandler  (byte[] message)
         {

@@ -10,6 +10,11 @@ namespace BananaPiSocketDron
     {
         static void Main(string[] args)
         {
+            UART uart = new UART();
+            Server server = new Server(uart);
+            uart.initCOM(server);
+            server.start();
+
         }
     }
 }

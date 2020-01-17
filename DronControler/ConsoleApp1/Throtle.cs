@@ -11,12 +11,12 @@ namespace ConsoleApp1
     {
         private byte type = 128;
         private byte throtle = 0;
-        UART uart;
+        Client client;
         private byte step = 5;
 
-        public Throtle(UART u)
+        public Throtle(Client u)
         {
-            this.uart = u;
+            this.client = u;
         }
         public override byte getType()
         {
@@ -30,27 +30,27 @@ namespace ConsoleApp1
         public void upThrotle()
         {   if (throtle<255)
                 this.throtle +=step;
-            base.SendComend(uart, throtle, 0, 0, 0);
+            base.SendComend(client, throtle, 0, 0, 0);
         }
         public void downThrotle()
         {
             if (throtle > 0)
                 this.throtle -= step;
-            base.SendComend(uart, throtle, 0, 0, 0);
+            base.SendComend(client, throtle, 0, 0, 0);
         }
         public void sendThrotle()
         {
-            base.SendComend(uart, throtle, 0, 0, 0);
+            base.SendComend(client, throtle, 0, 0, 0);
         }
         public void STOP()
         {
             throtle = 0;
-            base.SendComend(uart, throtle, 0, 0, 0);
+            base.SendComend(client, throtle, 0, 0, 0);
 
         }
         public void sendThrotleStatr()
         {
-            base.SendComend(uart, throtle, 0, 0, 0);
+            base.SendComend(client, throtle, 0, 0, 0);
         }
         public byte getThrotle() { return throtle; }
     };

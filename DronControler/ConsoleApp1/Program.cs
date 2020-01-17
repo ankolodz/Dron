@@ -14,24 +14,25 @@ namespace ConsoleApp1
         [STAThread]
         static void Main()
         {
-            UART myUart = new UART();
-            myUart.initCOM();
+            //UART myUart = new UART();
+            //myUart.initCOM();
                        
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Machine machine = new Machine(myUart);
-            Form1 form = new Form1();
-
-            Tcp udp = new Tcp("127.0.0.1", machine);
+            Client client = new Client();
+            Machine machine = new Machine(client);
             
 
+            Form1 form = new Form1();
+
+
+
+            client.init(machine);
             form.setMachine(machine);
-            myUart.setMachine(machine);
+
 
             Application.Run(form);
             Console.WriteLine("start listen");
-            udp.Lisiner();
 
             
         }

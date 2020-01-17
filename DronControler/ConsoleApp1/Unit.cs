@@ -11,7 +11,7 @@ namespace ConsoleApp1
        
         public abstract byte getType();
         public abstract void readMessage(byte[] message);
-        public void SendComend(UART MyComPort, byte part1, byte part2, byte part3, byte part4)
+        public void SendComend(Client MyComPort, byte part1, byte part2, byte part3, byte part4)
         {
             byte[] byteMessage = new byte[6];
             byteMessage[0] = getType();

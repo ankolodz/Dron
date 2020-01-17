@@ -15,12 +15,12 @@ namespace ConsoleApp1
         private byte moc_T_L = 0;
         private byte moc_T_P = 0;
         private static byte N = 5;
-        UART myUart;
+        Client client;
         private bool manual;
        // Form1 GUI;
 
-        public Engine(UART uart) {
-            this.myUart = uart;
+        public Engine(Client client) {
+            this.client = client;
            // this.GUI = GUI;
         }
         public byte[] getEngineState()
@@ -73,7 +73,7 @@ namespace ConsoleApp1
 
             }
            
-            base.SendComend(myUart,moc_P_L,moc_P_P,moc_T_L,moc_T_P);
+            base.SendComend(client,moc_P_L,moc_P_P,moc_T_L,moc_T_P);
         }
         public void downEnginePower(int EngineNb)
         {
@@ -126,11 +126,11 @@ namespace ConsoleApp1
                     break;
 
             }
-            base.SendComend(myUart, moc_P_L, moc_P_P, moc_T_L, moc_T_P);
+            base.SendComend(client, moc_P_L, moc_P_P, moc_T_L, moc_T_P);
         }
         public void STOP()
         {           
-            base.SendComend(myUart, 0, 0, 0, 0);
+            base.SendComend(client, 0, 0, 0, 0);
 
         }
 
