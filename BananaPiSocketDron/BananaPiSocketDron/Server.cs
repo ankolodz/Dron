@@ -31,12 +31,21 @@ namespace BananaPiSocketDron
             {
                 Console.WriteLine("Oczekiwanie na klienta");
                 clientSocket = serverSocket.AcceptTcpClient();
-                NetworkStream networkStream = clientSocket.GetStream();
-                networkStream.Read(bytesFrom, 0, 6);
-                DebugMode.PrintOnConsole(bytesFrom);
-                lastClient = clientSocket;
-
-                uart.sendMessage(bytesFrom, bytesFrom.Length);               
+                
+                try
+                {
+                    while ((true))
+                    {
+                            NetworkStream networkStream = clientSocket.GetStream();
+                            networkStream.Read(bytesFrom, 0, 6);
+                            DebugMode.PrintOnConsole(bytesFrom);
+                            uart.sendMessage(bytesFrom, bytesFrom.Length);
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Błąd połączenia");
+                }
             }
         }
         public void send(Byte[] message)

@@ -19,8 +19,21 @@ namespace ConsoleApp1
         public void init(Machine machine)
         {
             this.machine = machine;
-            clientSocked.Connect("127.0.0.1", 11000);
-            serverStream = clientSocked.GetStream();
+            do {
+                try
+                {
+                    clientSocked.Connect("127.0.0.1", 11000);
+                    serverStream = clientSocked.GetStream();
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("Błąd połączenia");
+                    Thread.Sleep(100);
+                }
+            } while (true);
+
+
 
             Thread ctThread = new Thread(getMessage);
             ctThread.Start();
