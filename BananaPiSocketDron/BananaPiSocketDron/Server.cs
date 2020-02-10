@@ -12,9 +12,10 @@ namespace BananaPiSocketDron
     public class Server
     {
         private TcpListener serverSocket;
-        TcpClient clientSocket = default(TcpClient);
-        TcpClient lastClient = null;
-        UART uart;
+        private TcpClient clientSocket = default(TcpClient);
+        private TcpClient lastClient = null;
+        private UART uart;
+        private int socketLife;
 
         
 
@@ -24,22 +25,30 @@ namespace BananaPiSocketDron
         {
             serverSocket = new TcpListener(IPAddress.Any, 11000);
             Console.WriteLine("Server starting...");
-            byte[] bytesFrom = new byte[6];
             serverSocket.Start();
 
             while (true)
             {
                 Console.WriteLine("Oczekiwanie na klienta");
                 clientSocket = serverSocket.AcceptTcpClient();
-                
+                lastClient = clientSocket;
+                Thread sockedChild = new Thread(new ThreadStart(this.LisiningSocket));
+                sockedChild.Start();
+                socketLife = 10;
                 try
                 {
                     while ((true))
                     {
-                            NetworkStream networkStream = clientSocket.GetStream();
-                            networkStream.Read(bytesFrom, 0, 6);
-                            DebugMode.PrintOnConsole(bytesFrom);
-                            uart.sendMessage(bytesFrom, bytesFrom.Length);
+                        if (socketLife <= 0)
+                        {
+                            Console.WriteLine("Brak komunikacji");
+                            sockedChild.Abort();
+                            lastClient = null;
+                            break;
+                        }
+                        socketLife--;
+                        Console.WriteLine("Socked decramented " + socketLife);
+                        Thread.Sleep(5000);
                     }
                 }
                 catch
@@ -47,6 +56,21 @@ namespace BananaPiSocketDron
                     Console.WriteLine("Błąd połączenia");
                 }
             }
+        }
+        private void LisiningSocket()
+        {
+            Console.WriteLine("Nowy kontroler - połączono");
+            byte[] bytesFrom = new byte[6];
+            while (true)
+            {
+                NetworkStream networkStream = clientSocket.GetStream();
+                networkStream.Read(bytesFrom, 0, 6);
+                DebugMode.PrintOnConsole(bytesFrom);
+                uart.sendMessage(bytesFrom, bytesFrom.Length);
+                socketLife = 5;
+                Console.WriteLine("Socked add life " + socketLife);
+            }
+            
         }
         public void send(Byte[] message)
         {
