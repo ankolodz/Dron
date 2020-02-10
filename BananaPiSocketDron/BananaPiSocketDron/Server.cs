@@ -48,8 +48,8 @@ namespace BananaPiSocketDron
                             break;
                         }
                         socketLife--;
-                        Console.WriteLine("Socked decramented " + socketLife);
-                        Thread.Sleep(2000);
+                        //Console.WriteLine("Socked decramented " + socketLife);
+                        Thread.Sleep(200);
                     }
                 }
                 catch

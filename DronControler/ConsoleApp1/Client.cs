@@ -65,7 +65,16 @@ namespace ConsoleApp1
         }
         public void sendMessage(byte[] message,int size)
         {
-            serverStream.Write(message, 0, size);
+            try
+            {
+                serverStream.Write(message, 0, size);
+            }
+            catch
+            {
+                Console.WriteLine("Zgubiono wiadomosć");
+                return;
+            }
+            
         }
     }
 }
