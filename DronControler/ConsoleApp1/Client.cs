@@ -12,40 +12,54 @@ namespace ConsoleApp1
     public class Client
     {
         Machine machine;
-        TcpClient clientSocked = new TcpClient();
-        NetworkStream serverStream = default(NetworkStream);
+        TcpClient clientSocked;
+        NetworkStream serverStream;
 
 
         public void init(Machine machine)
         {
             this.machine = machine;
-            do {
+            this.connect();            
+        }
+        private void connect()
+        {
+            do
+            {
                 try
                 {
+                    clientSocked = new TcpClient();
+                    serverStream = default(NetworkStream);
+
                     clientSocked.Connect("127.0.0.1", 11000);
                     serverStream = clientSocked.GetStream();
+
+                    Thread ctThread = new Thread(getMessage);
+                    ctThread.Start();
                     break;
                 }
                 catch
                 {
                     Console.WriteLine("Błąd połączenia");
-                    Thread.Sleep(100);
                 }
             } while (true);
 
-
-
-            Thread ctThread = new Thread(getMessage);
-            ctThread.Start();
         }
         private void getMessage()
-        {
+        {            
             while (true)
             {
+                try
+                {
                 serverStream = clientSocked.GetStream();
                 byte[] messageArr = new byte[6];
                 serverStream.Read(messageArr, 0, 6);
                 machine.messageHandler(messageArr);
+                }
+                catch
+                {
+                    connect();
+                }
+                
 
             }
         }

@@ -43,16 +43,26 @@ namespace BananaPiSocketDron
                         {
                             Console.WriteLine("Brak komunikacji");
                             sockedChild.Abort();
+                            clientSocket.Close();
                             lastClient = null;
                             break;
                         }
                         socketLife--;
                         Console.WriteLine("Socked decramented " + socketLife);
-                        Thread.Sleep(5000);
+                        Thread.Sleep(2000);
                     }
                 }
                 catch
                 {
+                    try
+                    {
+                        clientSocket.Close();
+                    }
+                    catch
+                    {
+                        DebugMode.addLog("Błąd awaryjnego zamknięcia gniazda");
+                        
+                    }
                     Console.WriteLine("Błąd połączenia");
                 }
             }
@@ -65,7 +75,7 @@ namespace BananaPiSocketDron
             {
                 NetworkStream networkStream = clientSocket.GetStream();
                 networkStream.Read(bytesFrom, 0, 6);
-                DebugMode.PrintOnConsole(bytesFrom);
+                //DebugMode.PrintOnConsole(bytesFrom);
                 uart.sendMessage(bytesFrom, bytesFrom.Length);
                 socketLife = 5;
                 Console.WriteLine("Socked add life " + socketLife);
