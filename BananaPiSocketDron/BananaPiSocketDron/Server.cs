@@ -22,14 +22,11 @@ namespace BananaPiSocketDron
         public Server(UART uart) => this.uart = uart;
 
         public void start()
-        {
-            serverSocket = new TcpListener(IPAddress.Any, 11000);
-            Console.WriteLine("Server starting...");
-            serverSocket.Start();
-
+        {     
             while (true)
-            {
-                Console.WriteLine("Oczekiwanie na klienta");              
+            {   serverSocket = new TcpListener(IPAddress.Any, 11000);
+                serverSocket.Start();
+                Console.WriteLine("Oczekiwanie na klienta");
                 clientSocket = serverSocket.AcceptTcpClient();
                 lastClient = clientSocket;
 
@@ -66,7 +63,10 @@ namespace BananaPiSocketDron
                         DebugMode.addLog("Błąd awaryjnego zamknięcia gniazda");
                         
                     }
-                    
+                }
+                finally
+                {
+                    serverSocket.Stop();
                 }
             }
         }
