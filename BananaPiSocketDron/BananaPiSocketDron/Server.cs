@@ -67,6 +67,9 @@ namespace BananaPiSocketDron
                 finally
                 {
                     serverSocket.Stop();
+                    Thread panicShutDownTimmer = new Thread(panicShutDown);
+                    panicShutDownTimmer.Start();
+
                 }
             }
         }
@@ -83,7 +86,6 @@ namespace BananaPiSocketDron
                     //DebugMode.PrintOnConsole(bytesFrom);
                     uart.sendMessage(bytesFrom, bytesFrom.Length);
                     socketLife = 5;
-                    Console.WriteLine("Socked add life " + socketLife);
                 }
             }
             catch
@@ -104,6 +106,15 @@ namespace BananaPiSocketDron
             NetworkStream clientStream = clientSocket.GetStream();
             clientStream.Write(message, 0, message.Length);
             clientStream.Flush();
+        }
+        public void panicShutDown()
+        {
+            Thread.Sleep(2000);
+            if (socketLife <= 0)
+            {
+                byte[] message = { 1, 0, 0, 0, 0, 1 };
+                uart.sendMessage(message, message.Length);
+            }
         }
 
     }
