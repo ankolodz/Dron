@@ -23,6 +23,7 @@ namespace ConsoleApp1
         }
         private void connect()
         {
+            int attempt = 1;
             do
             {
                 try
@@ -39,7 +40,10 @@ namespace ConsoleApp1
                 }
                 catch
                 {
-                    Console.WriteLine("Błąd połączenia");
+                    attempt++;
+                    Console.WriteLine("Błąd połączenia"
+                        +attempt);
+                    Thread.Sleep(attempt * 300);
                 }
             } while (true);
 
@@ -58,6 +62,7 @@ namespace ConsoleApp1
                 catch
                 {
                     connect();
+                    return;
                 }
                 
 
