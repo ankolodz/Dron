@@ -76,17 +76,38 @@ namespace ConsoleApp1
             gyroscop.Image = flag;
             Refresh();
         }
-        public void SetThrotle (byte t)
+        public void SetThrotle(byte t)
         {
             Throtle.Value = t;
             ThrotleState.Text = (t * 100 / 255).ToString() + "%";
             Refresh();
         }
+        public void SetRudder(byte y,byte x)
+        {
+            Pen bluePen = new Pen(Brushes.Blue);
+            bluePen.Width = 2.0F;
+            Pen redPen = new Pen(Brushes.Red);
+            redPen.Width = 2.0F;
+
+            Bitmap flagY = new Bitmap(25, 160);
+            Graphics yGraphic = Graphics.FromImage(flagY);
+            Bitmap flagX = new Bitmap(160, 25);
+            Graphics xGraphic = Graphics.FromImage(flagX);
+
+            yGraphic.DrawLine(bluePen,new Point(0,80),new Point(25,80));
+            yGraphic.DrawLine(redPen, new Point(0, y*2), new Point(25, y*2));
+
+            xGraphic.DrawLine(bluePen, new Point(80, 0), new Point(80, 25));
+            xGraphic.DrawLine(redPen, new Point(x*2, 0), new Point(x*2, 25));
+
+            vertical.Image = flagY;
+            horizontal.Image = flagX;
+        }
 
         private void PanicButton_Click(object sender, EventArgs e)
         {
             machine.STOP();
-            machine.throtle.STOP();
+            machine.flyController.STOP();
 
         }
 
@@ -112,10 +133,10 @@ namespace ConsoleApp1
                 switch (e.KeyCode)
                 {
                     case Keys.A:
-                        machine.throtle.upThrotle();
+                        machine.flyController.upThrotle();
                         break;
                     case Keys.Z:
-                        machine.throtle.downThrotle();
+                        machine.flyController.downThrotle();
                         break;
                     case Keys.D1:
                         machine.engine.upEnginePower(5);
@@ -148,6 +169,18 @@ namespace ConsoleApp1
                     case Keys.T:
                         machine.engine.downEnginePower(4);
                         break;
+                    case Keys.Up:
+                        machine.flyController.upRudder();
+                        break;
+                    case Keys.Down:
+                        machine.flyController.downRudder();
+                        break;
+                    case Keys.Left:
+                        machine.flyController.leftRudder();
+                        break;
+                    case Keys.Right:
+                        machine.flyController.rightRudder();
+                        break;
                     default:
                         machine.engine.STOP();
                         break;
@@ -156,18 +189,34 @@ namespace ConsoleApp1
             {
                 switch (e.KeyCode)
                 {
-                    case Keys.A:
-                        machine.throtle.upThrotle();
-                        break;
                     case Keys.Z:
-                        machine.throtle.downThrotle();
+                        machine.flyController.upThrotle();
+                        break;
+                    case Keys.X:
+                        machine.flyController.downThrotle();
+                        break;
+                    case Keys.W:
+                        machine.flyController.upRudder();
+                        break;
+                    case Keys.S:
+                        machine.flyController.downRudder();
+                        break;
+                    case Keys.A:
+                        machine.flyController.leftRudder();
+                        break;
+                    case Keys.D:
+                        machine.flyController.rightRudder();
+                        break;
+                    default:
+                        machine.STOP();
                         break;
 
                 }
             }
 
-            SetThrotle(machine.throtle.getThrotle());
+            SetThrotle(machine.flyController.getThrotle());
             SetEnginePower(machine.engine.getEngineState());
+            SetRudder(machine.flyController.getVerticalDirection(), machine.flyController.getHorizontalDirection());
             System.Threading.Thread.Sleep(100);
             
         }
@@ -175,12 +224,15 @@ namespace ConsoleApp1
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            SetThrotle(machine.throtle.getThrotle());
+            //SetThrotle(machine.flyController.getThrotle());
             SetEnginePower(machine.engine.getEngineState());
-            SetGyroscope(machine.gyroscope.getX(), machine.gyroscope.getY());
-
+            //SetGyroscope(machine.gyroscope.getX(), machine.gyroscope.getY());
+            
             if (!machine.engine.getManualState())
-                machine.throtle.sendThrotleStatr();
+            {
+                machine.flyController.sendFlyController();
+            }
+                
       
                 
             

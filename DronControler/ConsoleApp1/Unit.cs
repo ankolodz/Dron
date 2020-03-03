@@ -20,7 +20,7 @@ namespace ConsoleApp1
             byteMessage[3] = part3;
             byteMessage[4] = part4;
             byteMessage[5] = Convert.ToByte((getType() + part1 + part2 + part3 +part4)% 256);
-
+            DebugMode.PrintOnConsole(byteMessage);
             MyComPort.sendMessage(byteMessage, 6);
         }
     }

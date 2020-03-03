@@ -31,7 +31,7 @@ namespace ConsoleApp1
                     clientSocked = new TcpClient();
                     serverStream = default(NetworkStream);
 
-                    clientSocked.Connect("192.168.137.250", 11000);
+                    clientSocked.Connect("127.0.0.1", 11000);
                     serverStream = clientSocked.GetStream();
 
                     Thread ctThread = new Thread(getMessage);
@@ -41,8 +41,7 @@ namespace ConsoleApp1
                 catch
                 {
                     attempt++;
-                    Console.WriteLine("Błąd połączenia"
-                        +attempt);
+                    Console.WriteLine("Błąd połączenia" + attempt);
                     Thread.Sleep(attempt * 300);
                 }
             } while (true);

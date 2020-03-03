@@ -48,7 +48,11 @@
             this.ThrotleState = new System.Windows.Forms.Label();
             this.OverideControl = new System.Windows.Forms.ProgressBar();
             this.Overide = new System.Windows.Forms.Label();
+            this.vertical = new System.Windows.Forms.PictureBox();
+            this.horizontal = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vertical)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.horizontal)).BeginInit();
             this.SuspendLayout();
             // 
             // Engine1
@@ -228,11 +232,31 @@
             this.Overide.TabIndex = 18;
             this.Overide.Text = "Override";
             // 
+            // vertical
+            // 
+            this.vertical.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.vertical.Location = new System.Drawing.Point(376, 164);
+            this.vertical.Name = "vertical";
+            this.vertical.Size = new System.Drawing.Size(25, 160);
+            this.vertical.TabIndex = 19;
+            this.vertical.TabStop = false;
+            // 
+            // horizontal
+            // 
+            this.horizontal.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.horizontal.Location = new System.Drawing.Point(307, 330);
+            this.horizontal.Name = "horizontal";
+            this.horizontal.Size = new System.Drawing.Size(160, 25);
+            this.horizontal.TabIndex = 20;
+            this.horizontal.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.horizontal);
+            this.Controls.Add(this.vertical);
             this.Controls.Add(this.Overide);
             this.Controls.Add(this.OverideControl);
             this.Controls.Add(this.ThrotleState);
@@ -257,6 +281,8 @@
             this.Text = "Dron-APP";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ThrotleHendler);
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vertical)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.horizontal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +310,7 @@
         private System.Windows.Forms.Label ThrotleState;
         private System.Windows.Forms.ProgressBar OverideControl;
         private System.Windows.Forms.Label Overide;
+        private System.Windows.Forms.PictureBox vertical;
+        private System.Windows.Forms.PictureBox horizontal;
     }
 }

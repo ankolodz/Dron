@@ -11,7 +11,7 @@ namespace ConsoleApp1
         private Client client;
         public Engine engine;
         public Gyroscope gyroscope;
-        public FlyController throtle;
+        public FlyController flyController;
 
 
         public Machine (Client client)
@@ -19,7 +19,7 @@ namespace ConsoleApp1
             this.client = client;
             engine = new Engine(client);
             gyroscope = new Gyroscope();
-            throtle = new FlyController(client);
+            flyController = new FlyController(client);
         }
         public void messageHandler  (byte[] message)
         {

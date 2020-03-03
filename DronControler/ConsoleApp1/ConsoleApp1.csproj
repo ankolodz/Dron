@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Rudder.cs" />
     <Compile Include="Gyroscope.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="Engine.cs" />
@@ -77,7 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Throtle.cs" />
+    <Compile Include="FlyController.cs" />
     <Compile Include="UART.cs" />
     <Compile Include="Unit.cs" />
   </ItemGroup>

@@ -17,6 +17,15 @@ namespace ConsoleApp1
             string newLog = thisDay.ToString("D")+"  "+message;
                 return newLog ;
         }
+        public static void PrintOnConsole(byte[] arr)
+        {
+            String text = "";
+            foreach (byte i in arr)
+            {
+                text += i + " ";
+            }
+            Console.WriteLine(text);
+        }
 
     }
 }
