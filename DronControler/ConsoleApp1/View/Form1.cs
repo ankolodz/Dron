@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SlimDX.DirectInput;
 
 namespace ConsoleApp1
 {
     public partial class Form1 : Form
     {
-
+        private Machine machine;
+/*        private DirectInput joystick = new DirectInput();
+        SlimDX.DirectInput.Joystick stick;
+        Jou
+  */  
         
-        //private UART myUart = new UART();
-        //myUart.initCOM;
-        private Machine machine;//= new Machine(myUart);
         public Form1()
         {
             
@@ -38,8 +40,6 @@ namespace ConsoleApp1
 
         public void SetEnginePower(byte[] arr)
         {
-
-            //Console.WriteLine(arr[0] + " " + arr[1]);
 
             Engine1.Value = arr[0];
             Engine2.Value = arr[1];
@@ -126,67 +126,8 @@ namespace ConsoleApp1
             }
 
         }
-
         private void ThrotleHendler(object sender, KeyEventArgs e)
         {
-            if (machine.engine.getManualState())
-                switch (e.KeyCode)
-                {
-                    case Keys.A:
-                        machine.flyController.upThrotle();
-                        break;
-                    case Keys.Z:
-                        machine.flyController.downThrotle();
-                        break;
-                    case Keys.D1:
-                        machine.engine.upEnginePower(5);
-                        break;
-                    case Keys.D2:
-                        machine.engine.upEnginePower(1);
-                        break;
-                    case Keys.D3:
-                        machine.engine.upEnginePower(2);
-                        break;
-                    case Keys.D4:
-                        machine.engine.upEnginePower(3);
-                        break;
-                    case Keys.D5:
-                        machine.engine.upEnginePower(4);
-                        break;
-
-                    case Keys.Q:
-                        machine.engine.downEnginePower(5);
-                        break;
-                    case Keys.W:
-                        machine.engine.downEnginePower(1);
-                        break;
-                    case Keys.E:
-                        machine.engine.downEnginePower(2);
-                        break;
-                    case Keys.R:
-                        machine.engine.downEnginePower(3);
-                        break;
-                    case Keys.T:
-                        machine.engine.downEnginePower(4);
-                        break;
-                    case Keys.Up:
-                        machine.flyController.upRudder();
-                        break;
-                    case Keys.Down:
-                        machine.flyController.downRudder();
-                        break;
-                    case Keys.Left:
-                        machine.flyController.leftRudder();
-                        break;
-                    case Keys.Right:
-                        machine.flyController.rightRudder();
-                        break;
-                    default:
-                        machine.engine.STOP();
-                        break;
-                }
-            else
-            {
                 switch (e.KeyCode)
                 {
                     case Keys.Z:
@@ -212,7 +153,6 @@ namespace ConsoleApp1
                         break;
 
                 }
-            }
 
             SetThrotle(machine.flyController.getThrotle());
             SetEnginePower(machine.engine.getEngineState());
@@ -223,10 +163,7 @@ namespace ConsoleApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-            //SetThrotle(machine.flyController.getThrotle());
             SetEnginePower(machine.engine.getEngineState());
-            //SetGyroscope(machine.gyroscope.getX(), machine.gyroscope.getY());
             
             if (!machine.engine.getManualState())
             {
@@ -237,5 +174,6 @@ namespace ConsoleApp1
                 
             
         }
+
     };
 }

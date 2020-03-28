@@ -31,7 +31,7 @@ namespace ConsoleApp1
                     clientSocked = new TcpClient();
                     serverStream = default(NetworkStream);
 
-                    clientSocked.Connect("127.0.0.1", 11000);
+                    clientSocked.Connect("localhost", 11000);
                     serverStream = clientSocked.GetStream();
 
                     Thread ctThread = new Thread(getMessage);

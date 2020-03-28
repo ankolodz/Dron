@@ -279,6 +279,7 @@
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Dron-APP";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ThrotleHendler);
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).EndInit();

@@ -21,7 +21,6 @@ C:\Users\sara\source\repos\Dron\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssembly
 C:\Users\sara\source\repos\Dron\ConsoleApp1\obj\Debug\ConsoleApp1.csprojFakesResolveAssemblyReference.cache
 C:\Users\sara\source\repos\Dron\ConsoleApp1\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
 C:\Users\sara\source\repos\Dron\ConsoleApp1\bin\Debug\pl\Microsoft.QualityTools.Testing.Fakes.resources.dll
-C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.csprojFakesResolveAssemblyReference.cache
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.Form1.resources
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.Properties.Resources.resources
