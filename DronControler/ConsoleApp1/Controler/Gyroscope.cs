@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace DronApp
 {
-    public class Gyroscope : Unit
+    public class Gyroscope : Component
     {
-        private byte type = 2;
+
         private int x = 125;
         private int y = 125;
 

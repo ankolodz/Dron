@@ -4,24 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ConsoleApp1
+namespace DronApp
 {
     static class Program
     {
-        /// <summary>
-        /// Główny punkt wejścia dla aplikacji.
-        /// </summary>
-        [STAThread]
         static void Main()
         {
-            //UART myUart = new UART();
-            //myUart.initCOM();
-                       
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Client client = new Client();
-            Machine machine = new Machine(client);
-            
+
+            Proxy proxy;
+
+            Client client = new Client(proxy);
+            Machine machine = new Machine(proxy);
+
+            proxy.setUDP(client);
+            proxy.registerMachine(machine);
 
             Form1 form = new Form1();
 

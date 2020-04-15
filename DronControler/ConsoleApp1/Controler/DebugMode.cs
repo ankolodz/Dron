@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ConsoleApp1
+namespace DronApp
 {
     static class DebugMode
     {

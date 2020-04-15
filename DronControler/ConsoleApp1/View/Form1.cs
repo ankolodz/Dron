@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlimDX.DirectInput;
 
-namespace ConsoleApp1
+namespace DronApp
 {
     public partial class Form1 : Form
     {

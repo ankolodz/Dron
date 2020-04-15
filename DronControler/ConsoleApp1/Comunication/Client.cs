@@ -7,21 +7,20 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace DronApp
 {
     public class Client
     {
-        Machine machine;
+        Proxy proxy;
         TcpClient clientSocked;
         NetworkStream serverStream;
 
-
-        public void init(Machine machine)
-        {
-            this.machine = machine;
-            this.connect();            
+        public Client (Proxy proxy){
+            this.proxy = proxy;
         }
-        private void connect()
+
+
+        private void inti()
         {
             int attempt = 1;
             do

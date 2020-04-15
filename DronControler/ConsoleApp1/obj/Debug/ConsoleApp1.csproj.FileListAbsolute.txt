@@ -36,3 +36,17 @@ C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\bin\Debug\Microsoft.Qu
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\bin\Debug\WinFormAnimation.dll
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\bin\Debug\pl\Microsoft.QualityTools.Testing.Fakes.resources.dll
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CopyComplete
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.Form1.resources
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.Properties.Resources.resources
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.GenerateResource.cache
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\bin\Debug\SlimDX.dll
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\bin\Debug\WinFormAnimation.dll
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\bin\Debug\pl\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CopyComplete

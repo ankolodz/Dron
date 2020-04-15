@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleApp1.Properties {
+namespace DronApp.Properties {
     using System;
     
     

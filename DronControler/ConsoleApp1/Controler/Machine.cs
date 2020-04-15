@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace DronApp
 {
     public class Machine
     {
-        private Client client;
-        public Engine engine;
-        public Gyroscope gyroscope;
-        public FlyController flyController;
+        private Proxy proxy;
+        public readonly EngineManager engine;
+        public readonly Gyroscope gyroscope;
+        public readonly FlyManager flyController;
 
 
-        public Machine (Client client)
-        {
-            this.client = client;
-            engine = new Engine(client);
-            gyroscope = new Gyroscope();
-            flyController = new FlyController(client);
+        public Machine (Proxy proxy){
+            this.proxy = proxy;
+            //engine = new EngineManager(client);
+            //gyroscope = new Gyroscope();
+            //flyController = new FlyManager(client);
         }
         public void messageHandler  (byte[] message)
         {
