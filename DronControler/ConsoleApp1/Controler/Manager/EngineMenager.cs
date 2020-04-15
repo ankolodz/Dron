@@ -12,12 +12,16 @@ namespace DronApp
         private byte typ=1;
         private Engine[] engines;
         Proxy proxy;
-        private bool manual;
+        private bool manual = false;
 
 
 
         public EngineManager(Proxy proxy) {
             this.proxy = proxy;
+            this.engines = new Engine[4];
+            for (int i = 0; i < 4; i++)
+                engines[i] = new Engine();
+            Console.WriteLine(engines[0].getState());
         }
 
         public byte[] getEngineState()

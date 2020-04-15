@@ -13,12 +13,9 @@ namespace DronApp
 {
     public partial class Form1 : Form
     {
-        private Machine machine;
-/*        private DirectInput joystick = new DirectInput();
-        SlimDX.DirectInput.Joystick stick;
-        Jou
-  */  
-        
+        private Proxy proxy;
+
+
         public Form1()
         {
             
@@ -33,9 +30,9 @@ namespace DronApp
             SetGyroscope(125, 125);
 
         }
-        public void setMachine(Machine machine)
+        public void setProxy(Proxy proxy)
         {
-            this.machine = machine;
+            this.proxy = proxy;
         }
 
         public void SetEnginePower(byte[] arr)
@@ -106,22 +103,22 @@ namespace DronApp
 
         private void PanicButton_Click(object sender, EventArgs e)
         {
-            machine.STOP();
-            machine.flyController.STOP();
+            proxy.getMachine().STOP();
+            proxy.getMachine().flyController.STOP();
 
         }
 
 
         private void Override_Click(object sender, EventArgs e)
         {
-            if (machine.engine.getManualState())
+            if (proxy.getMachine().engine.getManualState())
             {
-                machine.engine.manualOFF();
+                proxy.getMachine().engine.manualOFF();
                 OverideControl.Value = 0;
             }
             else
             {
-                machine.engine.manualON();
+                proxy.getMachine().engine.manualON();
                 OverideControl.Value = 100;
             }
 
@@ -131,43 +128,43 @@ namespace DronApp
                 switch (e.KeyCode)
                 {
                     case Keys.Z:
-                        machine.flyController.upThrotle();
+                        proxy.getMachine().flyController.upThrotle();
                         break;
                     case Keys.X:
-                        machine.flyController.downThrotle();
+                        proxy.getMachine().flyController.downThrotle();
                         break;
                     case Keys.W:
-                        machine.flyController.upRudder();
+                        proxy.getMachine().flyController.upRudder();
                         break;
                     case Keys.S:
-                        machine.flyController.downRudder();
+                        proxy.getMachine().flyController.downRudder();
                         break;
                     case Keys.A:
-                        machine.flyController.leftRudder();
+                        proxy.getMachine().flyController.leftRudder();
                         break;
                     case Keys.D:
-                        machine.flyController.rightRudder();
+                        proxy.getMachine().flyController.rightRudder();
                         break;
                     default:
-                        machine.STOP();
+                        proxy.getMachine().STOP();
                         break;
 
                 }
 
-            SetThrotle(machine.flyController.getThrotle());
-            SetEnginePower(machine.engine.getEngineState());
-            SetRudder(machine.flyController.getVerticalDirection(), machine.flyController.getHorizontalDirection());
+            SetThrotle(proxy.getMachine().flyController.getThrotle());
+            SetEnginePower(proxy.getMachine().engine.getEngineState());
+            SetRudder(proxy.getMachine().flyController.getVerticalDirection(), proxy.getMachine().flyController.getHorizontalDirection());
             System.Threading.Thread.Sleep(100);
             
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            SetEnginePower(machine.engine.getEngineState());
+            SetEnginePower(proxy.getMachine().engine.getEngineState());
             
-            if (!machine.engine.getManualState())
+            if (!proxy.getMachine().engine.getManualState())
             {
-                machine.flyController.sendFlyController();
+                proxy.getMachine().flyController.sendFlyController();
             }
                 
       

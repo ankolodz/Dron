@@ -14,24 +14,20 @@ namespace DronApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Proxy proxy;
+            Proxy proxy = new Proxy();
 
             Client client = new Client(proxy);
             Machine machine = new Machine(proxy);
 
+            client.init();
             proxy.setUDP(client);
-            proxy.registerMachine(machine);
+            proxy.setMachine(machine);
 
-            Form1 form = new Form1();
-
-
-
-            client.init(machine);
-            form.setMachine(machine);
-
+            Form1 form = new Form1();            
+            form.setProxy(proxy);
 
             Application.Run(form);
-            Console.WriteLine("start listen");
+            Console.WriteLine("start program");
 
             
         }

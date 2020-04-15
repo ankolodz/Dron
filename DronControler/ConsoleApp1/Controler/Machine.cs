@@ -16,9 +16,9 @@ namespace DronApp
 
         public Machine (Proxy proxy){
             this.proxy = proxy;
-            //engine = new EngineManager(client);
+            engine = new EngineManager(proxy);
             //gyroscope = new Gyroscope();
-            //flyController = new FlyManager(client);
+            flyController = new FlyManager(proxy);
         }
         public void messageHandler  (byte[] message)
         {

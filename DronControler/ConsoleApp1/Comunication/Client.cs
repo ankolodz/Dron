@@ -20,7 +20,7 @@ namespace DronApp
         }
 
 
-        private void inti()
+        public void init()
         {
             int attempt = 1;
             do
@@ -55,11 +55,11 @@ namespace DronApp
                 serverStream = clientSocked.GetStream();
                 byte[] messageArr = new byte[6];
                 serverStream.Read(messageArr, 0, 6);
-                machine.messageHandler(messageArr);
+                proxy.getMachine().messageHandler(messageArr);
                 }
                 catch
                 {
-                    connect();
+                    init();
                     return;
                 }
                 

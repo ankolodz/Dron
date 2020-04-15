@@ -55,10 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comunication\Client.cs" />
+    <Compile Include="Comunication\Proxy.cs" />
     <Compile Include="Controler\Gyroscope.cs" />
+    <Compile Include="Controler\Part\Controler.cs" />
     <Compile Include="Controler\Machine.cs" />
-    <Compile Include="Controler\Engine.cs" />
+    <Compile Include="Controler\Manager\EngineMenager.cs" />
     <Compile Include="Controler\DebugMode.cs" />
+    <Compile Include="Controler\Part\Parts.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,8 +75,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Controler\FlyController.cs" />
-    <Compile Include="Controler\Unit.cs" />
+    <Compile Include="Controler\Manager\FlyController.cs" />
+    <Compile Include="Controler\Manager\Component.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -93,5 +96,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

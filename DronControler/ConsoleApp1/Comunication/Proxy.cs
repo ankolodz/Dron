@@ -8,17 +8,18 @@ namespace DronApp
 {
     public class Proxy
     {
-        Client udp = null;
-        Machine machine = null;
+        private Client udp = null;
+        private Machine machine = null;
 
         public Client getUDP() => udp;
-        public Machine getMachine => machine;
+        public Machine getMachine() => machine;
 
         public void setUDP(Client client){
             this.udp = client;
         }
 
-        public void registerMachine(Machine machine){
+
+        public void setMachine(Machine machine){
             this.machine = machine;
         }
     }

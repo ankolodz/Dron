@@ -8,7 +8,7 @@ namespace DronApp
 {
     public class Gyroscope : Component
     {
-
+        private byte type = 10;
         private int x = 125;
         private int y = 125;
 

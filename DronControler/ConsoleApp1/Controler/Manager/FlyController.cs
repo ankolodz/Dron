@@ -12,20 +12,22 @@ namespace DronApp
     {
         private byte type = 128;
 
-        private Throtle throtle;
-        private SingleRudder verticalDirection;
-        private SingleRudder horizontalDirection;
+        private Throtle throtle = new Throtle();
+        private SingleRudder verticalRudder;
+        private SingleRudder horizontalRudder;
         private Proxy proxy;
 
-        public FlyManager(Proxy p)
-        {
+        public FlyManager(Proxy p){
             this.proxy = p;
+            this.throtle = new Throtle();
+            this.verticalRudder = new SingleRudder();
+            this.horizontalRudder = new SingleRudder();
         }
 
         public override byte getType() { return type;}
         public byte getThrotle() { return throtle.getState(); }
-        public byte getVerticalDirection() { return verticalDirection.getState(); }
-        public byte getHorizontalDirection() { return horizontalDirection.getState(); }
+        public byte getVerticalDirection() { return verticalRudder.getState(); }
+        public byte getHorizontalDirection() { return horizontalRudder.getState(); }
 
 
         public override void readMessage(byte[] message)
@@ -47,27 +49,27 @@ namespace DronApp
         //***rudder***
 
         public void downRudder(){
-            verticalDirection.down();
+            verticalRudder.down();
             base.isChange();
         }
 
         public void upRudder(){
-            verticalDirection.up();
+            verticalRudder.up();
             base.isChange();
         }
 
         public void leftRudder(){
-            horizontalDirection.down();
+            horizontalRudder.down();
             base.isChange();
         }
         public void rightRudder(){
-            horizontalDirection.up();
+            horizontalRudder.up();
             base.isChange();
         }
 
 
         public void sendFlyController(){
-            base.SendComend(proxy, throtle.getState(), verticalDirection.getState(), horizontalDirection.getState(), 0);
+            base.SendComend(proxy, throtle.getState(), verticalRudder.getState(), horizontalRudder.getState(), 0);
         }
 
         public void STOP(){
