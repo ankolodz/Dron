@@ -172,5 +172,16 @@ namespace DronApp
             
         }
 
+        private void sendFrame_Click(object sender, EventArgs e)
+        {
+            byte[] message = { 130, 0, 0, 0, 0, 130 };
+            message[1] = Byte.Parse(x1.Text);
+            message[2] = Byte.Parse(x2.Text);
+            message[3] = Byte.Parse(x3.Text);
+            message[5] = Convert.ToByte((message[0] + message[1] + message[2] + message[3] + message[4]) % 256);
+            proxy.getUDP().sendMessage(message,6);
+
+            
+        }
     };
 }

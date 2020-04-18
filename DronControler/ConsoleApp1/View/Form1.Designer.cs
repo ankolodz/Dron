@@ -44,6 +44,10 @@
             this.Overide = new System.Windows.Forms.Label();
             this.vertical = new System.Windows.Forms.PictureBox();
             this.horizontal = new System.Windows.Forms.PictureBox();
+            this.x1 = new System.Windows.Forms.TextBox();
+            this.x2 = new System.Windows.Forms.TextBox();
+            this.x3 = new System.Windows.Forms.TextBox();
+            this.sendFrame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontal)).BeginInit();
@@ -244,11 +248,46 @@
             this.horizontal.TabIndex = 20;
             this.horizontal.TabStop = false;
             // 
+            // x1
+            // 
+            this.x1.Location = new System.Drawing.Point(580, 178);
+            this.x1.Name = "x1";
+            this.x1.Size = new System.Drawing.Size(100, 20);
+            this.x1.TabIndex = 21;
+            // 
+            // x2
+            // 
+            this.x2.Location = new System.Drawing.Point(580, 205);
+            this.x2.Name = "x2";
+            this.x2.Size = new System.Drawing.Size(100, 20);
+            this.x2.TabIndex = 22;
+            // 
+            // x3
+            // 
+            this.x3.Location = new System.Drawing.Point(580, 232);
+            this.x3.Name = "x3";
+            this.x3.Size = new System.Drawing.Size(100, 20);
+            this.x3.TabIndex = 23;
+            // 
+            // sendFrame
+            // 
+            this.sendFrame.Location = new System.Drawing.Point(580, 259);
+            this.sendFrame.Name = "sendFrame";
+            this.sendFrame.Size = new System.Drawing.Size(75, 23);
+            this.sendFrame.TabIndex = 24;
+            this.sendFrame.Text = "SEND";
+            this.sendFrame.UseVisualStyleBackColor = true;
+            this.sendFrame.Click += new System.EventHandler(this.sendFrame_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.sendFrame);
+            this.Controls.Add(this.x3);
+            this.Controls.Add(this.x2);
+            this.Controls.Add(this.x1);
             this.Controls.Add(this.horizontal);
             this.Controls.Add(this.vertical);
             this.Controls.Add(this.Overide);
@@ -273,7 +312,6 @@
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Dron-APP";
-            //this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ThrotleHendler);
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).EndInit();
@@ -307,5 +345,9 @@
         private System.Windows.Forms.Label Overide;
         private System.Windows.Forms.PictureBox vertical;
         private System.Windows.Forms.PictureBox horizontal;
+        private System.Windows.Forms.TextBox x1;
+        private System.Windows.Forms.TextBox x2;
+        private System.Windows.Forms.TextBox x3;
+        private System.Windows.Forms.Button sendFrame;
     }
 }
