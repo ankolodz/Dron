@@ -16,7 +16,7 @@ namespace BananaPiSocketDron
         int bid = 0;
         SerialPort portCOM = new SerialPort();
         Server server;
-
+        private string portName = "/dev/ttyS2";
         // public UART(Server server) => this.server = server;
 
 
@@ -28,14 +28,11 @@ namespace BananaPiSocketDron
             portCOM.BaudRate = 9600;
             portCOM.DataBits = 8;
             portCOM.StopBits = StopBits.One;
+            portCOM.PortName = portName;
+            
 
-            var ports = SerialPort.GetPortNames();
-            for (int i1 = 0; i1 < ports.Length; i1++)
-            {
-                Console.WriteLine(ports[i1]);
-            }
-
-            portCOM.PortName = Console.ReadLine();
+            
+            
 
 
 
@@ -54,6 +51,15 @@ namespace BananaPiSocketDron
                 {
                     bid++;
                     Thread.Sleep(500);
+
+                    Console.WriteLine("Błąd portu, podaj jeden z dostępnych");
+                    var ports = SerialPort.GetPortNames();
+                    for (int i1 = 0; i1 < ports.Length; i1++)
+                    {
+                        Console.WriteLine(ports[i1]);
+                    }
+                    this.portName = Console.ReadLine();
+
                     initCOM(server);
                 }
             }
