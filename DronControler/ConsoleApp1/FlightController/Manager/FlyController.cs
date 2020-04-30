@@ -37,12 +37,13 @@ namespace DronApp
 
         //***throtle***
 
-        public void upThrotle(){
-            throtle.up();
+        public void upThrotle(int N=5){
+            throtle.up(N);
             base.isChange();
         }
-        public void downThrotle(){
-            throtle.down();
+        public void downThrotle(int N=5)
+        {
+            throtle.down(-N);
             base.isChange();
         }
 
@@ -64,6 +65,16 @@ namespace DronApp
         }
         public void rightRudder(){
             horizontalRudder.up();
+            base.isChange();
+        }
+        public void setHorizontal(int val)
+        {
+            horizontalRudder.set((byte)val);
+            base.isChange();
+        }
+        public void setVertical(int val)
+        {
+            verticalRudder.set((byte)val);
             base.isChange();
         }
 

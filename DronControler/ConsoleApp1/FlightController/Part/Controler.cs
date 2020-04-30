@@ -9,8 +9,8 @@ namespace DronApp
 
     interface Controler
     {
-        void up();
-        void down();
+        void up(int val);
+        void down(int val);
         byte getState();
         void set(byte value);
              

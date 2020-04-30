@@ -9,15 +9,14 @@ namespace DronApp
     class Engine : Controler
     {
         private byte enginePower = 0;
-        private static byte N = 5;
 
-        public void down()
+        public void down(int N = 5)
         {
             enginePower = (byte) Math.Max(0, enginePower - N);
             
         }
 
-        public void up()
+        public void up(int N = -5)
         {
             enginePower = (byte)Math.Min(255, enginePower + N);
         }
@@ -39,15 +38,14 @@ namespace DronApp
     public class Throtle : Controler
     {
         private byte throtle = 0;
-        private static byte N = 3;
 
-        public void down()
+        public void down(int N)
         {
             throtle = (byte)Math.Max(0, throtle - N);
 
         }
 
-        public void up()
+        public void up(int N)
         {
             throtle = (byte)Math.Min(255, throtle + N);
         }
@@ -71,15 +69,16 @@ namespace DronApp
         private static byte MAX = 80;
         private byte value = 40;  // MAX/2      
 
-        public void down()
+
+        public void down(int val=1)
         {
-            value = (byte)Math.Max(0, value - 1);
+            value = (byte)Math.Max(0, value - val);
 
         }
 
-        public void up()
+        public void up(int val=-1)
         {
-            value = (byte)Math.Min(MAX, value + 1);
+            value = (byte)Math.Min(MAX, value + val);
         }
 
         public byte getState()
