@@ -13,8 +13,9 @@ namespace DronApp.ControlManager
         private Joystick joystick;
         private Machine machine;
 
-        private int accurancyThrotle = 40, accurancyRudder = 80;
-        private int oX, oY,sX, sY;
+        private Thread t;
+        private int accurancyThrotle = 20, accurancyRudder = 80;
+        private int oX, oY, sX, sY;
 
 
         public GamePad(Machine machine)
@@ -31,7 +32,7 @@ namespace DronApp.ControlManager
         public bool init()
         {
             oX = accurancyThrotle / 2; oY = accurancyThrotle / 2;
-            sX = accurancyRudder / 2; sY = accurancyRudder / 2;
+            sX = 0; sY = 0;
 
             // Initialize DirectInput
             var directInput = new DirectInput();
@@ -66,9 +67,14 @@ namespace DronApp.ControlManager
 
             // Acquire the joystick
             joystick.Acquire();
-
+            t = new Thread(new ThreadStart(startLisiner));
+            t.Start();
             return true;
 
+        }
+        public void stop()
+        {
+            t.Abort();
         }
 
         public void startLisiner()
@@ -82,30 +88,35 @@ namespace DronApp.ControlManager
 
 
                 //Maping throtle
-                if (sX != state.Z % accurancyThrotle)
-                {
-                    sX = state.Z % accurancyThrotle;
-                    machine.flyController.upThrotle(sX);
+                if (convert(state.Y,accurancyThrotle) != accurancyThrotle/2)
+                {                  
+                    sY = convert(state.Y,accurancyThrotle);
+                    if (sY < accurancyThrotle / 2)
+                        machine.flyController.upThrotle(accurancyThrotle / 2 - sY);
+                    else
+                        machine.flyController.downThrotle(sY - accurancyThrotle / 2);
                 }
-                if (sY != state.RotationZ % accurancyThrotle)
-                {
-                    sY = state.RotationZ % accurancyThrotle;
-                    machine.flyController.downThrotle(sY);
-                }
+
                 //Maping rudder
-                if (oX != state.X % accurancyRudder)
+                Console.WriteLine(state.Z);
+                if (oX != convert(state.Z, accurancyRudder))
                 {
-                    oX = state.X % accurancyRudder;
+                    oX = convert(state.Z, accurancyRudder);
                     machine.flyController.setHorizontal(oX);
                 }
-                if (oY != state.Y % accurancyRudder)
+                if (oY != convert(state.RotationZ, accurancyRudder))
                 {
-                    oY = state.Y % accurancyRudder;
+                    oY = convert(state.RotationZ, accurancyRudder);
                     machine.flyController.setVertical(oY);
                 }
-                Console.WriteLine("OK");
-                Thread.Sleep(100);
+                //Console.WriteLine("OK");
+                Thread.Sleep(200);
             }
+        }
+        private int convert(int val, int accurancy)
+        {
+            int one = 65535 / accurancy;
+            return val / one;
         }
 
 

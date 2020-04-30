@@ -43,7 +43,7 @@ namespace DronApp
         }
         public void downThrotle(int N=5)
         {
-            throtle.down(-N);
+            throtle.down(N);
             base.isChange();
         }
 
