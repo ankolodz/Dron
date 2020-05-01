@@ -20,8 +20,8 @@ namespace DronApp
             Client client = new Client(proxy);
             Machine machine = new Machine(proxy);
 
-            GamePad gamepad = new GamePad(machine);
-            gamepad.init();
+            //GamePad gamepad = new GamePad(machine);
+            //gamepad.init();
 
             client.init();
             proxy.setUDP(client);

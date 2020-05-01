@@ -14,8 +14,8 @@ namespace DronApp.ControlManager
         private Machine machine;
 
         private Thread t;
-        private int accurancyThrotle = 20, accurancyRudder = 80;
-        private int oX, oY, sX, sY;
+        private int accurancyThrotle = 10, accurancyRudder = 80;
+        private int oX, oY, sX, sY, lastDirect;
 
 
         public GamePad(Machine machine)
@@ -33,6 +33,7 @@ namespace DronApp.ControlManager
         {
             oX = accurancyThrotle / 2; oY = accurancyThrotle / 2;
             sX = 0; sY = 0;
+            lastDirect = 0;
 
             // Initialize DirectInput
             var directInput = new DirectInput();
@@ -76,43 +77,81 @@ namespace DronApp.ControlManager
         {
             t.Abort();
         }
-
+ 
         public void startLisiner()
         {
-            //    poll events from joystick
             while (true)
             {
                 joystick.Poll();
-                var state = joystick.GetCurrentState();
-                var myobject = joystick.GetObjects();
+                JoystickState state = joystick.GetCurrentState();
 
+                rightStick(state);
+                leftStick(state);
+                testButtonsPress();           
 
-                //Maping throtle
-                if (convert(state.Y,accurancyThrotle) != accurancyThrotle/2)
-                {                  
-                    sY = convert(state.Y,accurancyThrotle);
-                    if (sY < accurancyThrotle / 2)
-                        machine.flyController.upThrotle(accurancyThrotle / 2 - sY);
-                    else
-                        machine.flyController.downThrotle(sY - accurancyThrotle / 2);
-                }
-
-                //Maping rudder
-                Console.WriteLine(state.Z);
-                if (oX != convert(state.Z, accurancyRudder))
-                {
-                    oX = convert(state.Z, accurancyRudder);
-                    machine.flyController.setHorizontal(oX);
-                }
-                if (oY != convert(state.RotationZ, accurancyRudder))
-                {
-                    oY = convert(state.RotationZ, accurancyRudder);
-                    machine.flyController.setVertical(oY);
-                }
-                //Console.WriteLine("OK");
                 Thread.Sleep(200);
             }
         }
+
+
+        private void rightStick(JoystickState state)
+        {
+            //Maping rudder
+            if (oX != convert(state.Z, accurancyRudder))
+            {
+                oX = convert(state.Z, accurancyRudder);
+                machine.flyController.setHorizontal(oX);
+            }
+            if (oY != convert(state.RotationZ, accurancyRudder))
+            {
+                oY = convert(state.RotationZ, accurancyRudder);
+                machine.flyController.setVertical(oY);
+            }
+        }
+
+        private void leftStick(JoystickState state)
+        {
+            //Maping throtle
+            if (convert(state.Y, accurancyThrotle) != accurancyThrotle / 2)
+            {
+                sY = convert(state.Y, accurancyThrotle);
+                if (sY < accurancyThrotle / 2)
+                    machine.flyController.upThrotle(accurancyThrotle / 2 - sY);
+                else
+                    machine.flyController.downThrotle(sY - accurancyThrotle / 2);
+            }
+        }
+
+
+        private void testButtonsPress()
+        {
+            IList<JoystickState> myobject = joystick.GetBufferedData();
+            foreach (var i in myobject)
+            {
+
+                //Maping accurate throttle
+                if (i.GetPointOfViewControllers()[0] == -1)
+                {
+                    switch (lastDirect)
+                    {
+                        //single throtle
+                        case 0:
+                            machine.flyController.upThrotle(1);
+                            break;
+                        case 18000:
+                            machine.flyController.downThrotle(1);
+                            break;
+
+                    }
+                }
+                lastDirect = i.GetPointOfViewControllers()[0];
+
+                if (i.IsPressed(1))
+                    machine.flyController.STOP();
+
+            }
+        }
+
         private int convert(int val, int accurancy)
         {
             int one = 65535 / accurancy;

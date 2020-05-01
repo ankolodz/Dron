@@ -56,9 +56,9 @@
   <ItemGroup>
     <Compile Include="Comunication\Client.cs" />
     <Compile Include="Comunication\Proxy.cs" />
-    <Compile Include="ControlManager\GamePadController.cs" />
-    <Compile Include="ControlManager\iController.cs" />
-    <Compile Include="ControlManager\KeybordController.cs" />
+    <Compile Include="ControllManager\GamePadController.cs" />
+    <Compile Include="ControllManager\iController.cs" />
+    <Compile Include="ControllManager\KeybordController.cs" />
     <Compile Include="FlightController\Gyroscope.cs" />
     <Compile Include="FlightController\Part\Controler.cs" />
     <Compile Include="FlightController\Machine.cs" />
