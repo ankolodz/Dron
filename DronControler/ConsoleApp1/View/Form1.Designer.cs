@@ -29,9 +29,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.update = new System.Windows.Forms.Timer(this.components);
             this.gyroscop = new System.Windows.Forms.PictureBox();
-            this.Throtle = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
-            this.ThrotleState = new System.Windows.Forms.Label();
             this.vertical = new System.Windows.Forms.PictureBox();
             this.horizontal = new System.Windows.Forms.PictureBox();
             this.x1 = new System.Windows.Forms.TextBox();
@@ -42,6 +40,7 @@
             this.Engine3 = new CircularProgressBar.CircularProgressBar();
             this.Engine2 = new CircularProgressBar.CircularProgressBar();
             this.Engine4 = new CircularProgressBar.CircularProgressBar();
+            this.Throtle = new CircularProgressBar.CircularProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontal)).BeginInit();
@@ -111,14 +110,6 @@
             this.gyroscop.TabIndex = 13;
             this.gyroscop.TabStop = false;
             // 
-            // Throtle
-            // 
-            this.Throtle.Location = new System.Drawing.Point(329, 412);
-            this.Throtle.MarqueeAnimationSpeed = 0;
-            this.Throtle.Name = "Throtle";
-            this.Throtle.Size = new System.Drawing.Size(237, 26);
-            this.Throtle.TabIndex = 14;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -127,15 +118,6 @@
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Throtle";
-            // 
-            // ThrotleState
-            // 
-            this.ThrotleState.AutoSize = true;
-            this.ThrotleState.Location = new System.Drawing.Point(432, 396);
-            this.ThrotleState.Name = "ThrotleState";
-            this.ThrotleState.Size = new System.Drawing.Size(21, 13);
-            this.ThrotleState.TabIndex = 16;
-            this.ThrotleState.Text = "0%";
             // 
             // vertical
             // 
@@ -314,11 +296,44 @@
             this.Engine4.Text = " ";
             this.Engine4.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             // 
+            // Throtle
+            // 
+            this.Throtle.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.Throtle.AnimationSpeed = 200;
+            this.Throtle.BackColor = System.Drawing.Color.Transparent;
+            this.Throtle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Throtle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Throtle.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Throtle.InnerMargin = 2;
+            this.Throtle.InnerWidth = -1;
+            this.Throtle.Location = new System.Drawing.Point(329, 377);
+            this.Throtle.MarqueeAnimationSpeed = 2000;
+            this.Throtle.Maximum = 255;
+            this.Throtle.Name = "Throtle";
+            this.Throtle.OuterColor = System.Drawing.Color.Gray;
+            this.Throtle.OuterMargin = -25;
+            this.Throtle.OuterWidth = 26;
+            this.Throtle.ProgressColor = System.Drawing.Color.Maroon;
+            this.Throtle.ProgressWidth = 25;
+            this.Throtle.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Throtle.Size = new System.Drawing.Size(210, 192);
+            this.Throtle.StartAngle = 270;
+            this.Throtle.SubscriptColor = System.Drawing.Color.Black;
+            this.Throtle.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.Throtle.SubscriptText = "0";
+            this.Throtle.SuperscriptColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Throtle.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.Throtle.SuperscriptText = "%";
+            this.Throtle.TabIndex = 31;
+            this.Throtle.Text = " ";
+            this.Throtle.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(911, 581);
+            this.Controls.Add(this.Throtle);
             this.Controls.Add(this.Engine4);
             this.Controls.Add(this.Engine2);
             this.Controls.Add(this.Engine3);
@@ -329,9 +344,7 @@
             this.Controls.Add(this.x1);
             this.Controls.Add(this.horizontal);
             this.Controls.Add(this.vertical);
-            this.Controls.Add(this.ThrotleState);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Throtle);
             this.Controls.Add(this.gyroscop);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -359,9 +372,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer update;
         private System.Windows.Forms.PictureBox gyroscop;
-        private System.Windows.Forms.ProgressBar Throtle;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label ThrotleState;
         private System.Windows.Forms.PictureBox vertical;
         private System.Windows.Forms.PictureBox horizontal;
         private System.Windows.Forms.TextBox x1;
@@ -372,5 +383,6 @@
         private CircularProgressBar.CircularProgressBar Engine3;
         private CircularProgressBar.CircularProgressBar Engine2;
         private CircularProgressBar.CircularProgressBar Engine4;
+        private CircularProgressBar.CircularProgressBar Throtle;
     }
 }

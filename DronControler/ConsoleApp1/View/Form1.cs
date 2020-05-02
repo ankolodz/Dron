@@ -21,34 +21,25 @@ namespace DronApp
             
             InitializeComponent();
 
-
             //gyroscop = new PictureBox();
-            Engine1.Value = 30;
             SetGyroscope(125, 125);
 
         }
-        //update
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            SetEnginePower(proxy.getMachine().engine.getEngineState());
-
-            if (!proxy.getMachine().engine.getManualState())
-            {
-                proxy.getMachine().flyController.sendFlyController();
-            }
-
-
-
-
-        }
-
+        
 
         public void setProxy(Proxy proxy)
         {
             this.proxy = proxy;
         }
 
-        public void SetEnginePower(byte[] arr)
+        //update
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            updateThrotle(proxy.getMachine().flyController.getThrotle());
+            updateEngine(proxy.getMachine().engine.getEngineState());
+
+        }
+        public void updateEngine(byte[] arr)
         {
 
             Engine1.Value = arr[0];
@@ -63,6 +54,14 @@ namespace DronApp
 
             Refresh();
         }
+        public void updateThrotle(byte t)
+        {
+            Throtle.Value = t;
+            Throtle.SubscriptText = (t * 100 / 255).ToString();
+            Refresh();
+        }
+
+
         public void SetGyroscope(int x, int y)
         {
             x = 255 - x;
@@ -86,12 +85,7 @@ namespace DronApp
             gyroscop.Image = flag;
             Refresh();
         }
-        public void SetThrotle(byte t)
-        {
-            Throtle.Value = t;
-            ThrotleState.Text = (t * 100 / 255).ToString() + "%";
-            Refresh();
-        }
+
         public void SetRudder(byte y,byte x)
         {
             Pen bluePen = new Pen(Brushes.Blue);
@@ -117,42 +111,15 @@ namespace DronApp
         private void PanicButton_Click(object sender, EventArgs e)
         {
             proxy.getMachine().STOP();
-            proxy.getMachine().flyController.STOP();
-
         }
 
 
 
         private void ThrotleHendler(object sender, KeyEventArgs e)
-        {
-                switch (e.KeyCode)
-                {
-                    case Keys.Z:
-                        proxy.getMachine().flyController.upThrotle();
-                        break;
-                    case Keys.X:
-                        proxy.getMachine().flyController.downThrotle();
-                        break;
-                    case Keys.W:
-                        proxy.getMachine().flyController.upRudder();
-                        break;
-                    case Keys.S:
-                        proxy.getMachine().flyController.downRudder();
-                        break;
-                    case Keys.A:
-                        proxy.getMachine().flyController.leftRudder();
-                        break;
-                    case Keys.D:
-                        proxy.getMachine().flyController.rightRudder();
-                        break;
-                    default:
-                        proxy.getMachine().STOP();
-                        break;
+        {               
 
-                }
+            
 
-            SetThrotle(proxy.getMachine().flyController.getThrotle());
-            SetEnginePower(proxy.getMachine().engine.getEngineState());
             SetRudder(proxy.getMachine().flyController.getVerticalDirection(), proxy.getMachine().flyController.getHorizontalDirection());
             System.Threading.Thread.Sleep(100);
             
