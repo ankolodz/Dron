@@ -40,6 +40,7 @@ namespace DronApp
         public void STOP()
         {
             engine.STOP();
+            flyController.downThrotle(255);
         }
 
         

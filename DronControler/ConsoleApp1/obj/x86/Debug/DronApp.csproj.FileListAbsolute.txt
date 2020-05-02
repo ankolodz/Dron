@@ -1,0 +1,5 @@
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\x86\Debug\DronApp.csprojAssemblyReference.cache
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\x86\Debug\DronApp.Form1.resources
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\x86\Debug\ConsoleApp1.Properties.Resources.resources
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\x86\Debug\DronApp.csproj.GenerateResource.cache
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\x86\Debug\DronApp.csproj.CoreCompileInputs.cache

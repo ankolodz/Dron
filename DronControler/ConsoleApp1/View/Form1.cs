@@ -20,16 +20,29 @@ namespace DronApp
         {
             
             InitializeComponent();
-            Engine1.Maximum = 255;
-            Engine2.Maximum = 255;
-            Engine3.Maximum = 255;
-            Engine4.Maximum = 255;
-            Throtle.Maximum = 255;
-            //gyroscop = new PictureBox();
 
+
+            //gyroscop = new PictureBox();
+            Engine1.Value = 30;
             SetGyroscope(125, 125);
 
         }
+        //update
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            SetEnginePower(proxy.getMachine().engine.getEngineState());
+
+            if (!proxy.getMachine().engine.getManualState())
+            {
+                proxy.getMachine().flyController.sendFlyController();
+            }
+
+
+
+
+        }
+
+
         public void setProxy(Proxy proxy)
         {
             this.proxy = proxy;
@@ -43,10 +56,10 @@ namespace DronApp
             Engine3.Value = arr[2];
             Engine4.Value = arr[3];
 
-            Engine1State.Text = (arr[0] * 100 / 255).ToString() + "%";
-            Engine2State.Text = (arr[1] * 100 / 255).ToString() + "%";
-            Engine3State.Text = (arr[2] * 100 / 255).ToString() + "%";
-            Engine4State.Text = (arr[3] * 100 / 255).ToString() + "%";
+            Engine1.SubscriptText = (arr[0] * 100 / 255).ToString();
+            Engine2.SubscriptText = (arr[1] * 100 / 255).ToString();
+            Engine3.SubscriptText = (arr[2] * 100 / 255).ToString();
+            Engine4.SubscriptText = (arr[3] * 100 / 255).ToString();
 
             Refresh();
         }
@@ -109,20 +122,7 @@ namespace DronApp
         }
 
 
-        private void Override_Click(object sender, EventArgs e)
-        {
-            if (proxy.getMachine().engine.getManualState())
-            {
-                proxy.getMachine().engine.manualOFF();
-                OverideControl.Value = 0;
-            }
-            else
-            {
-                proxy.getMachine().engine.manualON();
-                OverideControl.Value = 100;
-            }
 
-        }
         private void ThrotleHendler(object sender, KeyEventArgs e)
         {
                 switch (e.KeyCode)
@@ -158,30 +158,11 @@ namespace DronApp
             
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            SetEnginePower(proxy.getMachine().engine.getEngineState());
-            
-            if (!proxy.getMachine().engine.getManualState())
-            {
-                proxy.getMachine().flyController.sendFlyController();
-            }
-                
-      
-                
-            
-        }
+
 
         private void sendFrame_Click(object sender, EventArgs e)
         {
-            byte[] message = { 130, 0, 0, 0, 0, 130 };
-            message[1] = Byte.Parse(x1.Text);
-            message[2] = Byte.Parse(x2.Text);
-            message[3] = Byte.Parse(x3.Text);
-            message[5] = Convert.ToByte((message[0] + message[1] + message[2] + message[3] + message[4]) % 256);
-            proxy.getUDP().sendMessage(message,6);
-
-            
+            proxy.getMachine().STOP();            
         }
     };
 }
