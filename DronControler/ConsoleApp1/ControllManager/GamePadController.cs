@@ -136,10 +136,10 @@ namespace DronApp.ControlManager
                     {
                         //single throtle
                         case 0:
-                            machine.flyController.upThrotle(1);
+                            machine.flyController.upThrotle(2);
                             break;
                         case 18000:
-                            machine.flyController.downThrotle(1);
+                            machine.flyController.downThrotle(2);
                             break;
 
                     }

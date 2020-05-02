@@ -309,3 +309,4 @@
 1 maja 2020  Error connection, port not reply
 1 maja 2020  Error connection, port not reply
 1 maja 2020  Error connection, port not reply
+2 maja 2020  Error connection, port not reply

@@ -37,6 +37,7 @@ namespace DronApp
         {
             updateThrotle(proxy.getMachine().flyController.getThrotle());
             updateEngine(proxy.getMachine().engine.getEngineState());
+            proxy.getMachine().sendToReal();
 
         }
         public void updateEngine(byte[] arr)
