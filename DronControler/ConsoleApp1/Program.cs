@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DronApp.Comunication;
 using DronApp.ControlManager;
 
 namespace DronApp
@@ -17,7 +18,7 @@ namespace DronApp
 
             Proxy proxy = new Proxy();
 
-            Client client = new Client(proxy);
+            Client client = new UART(proxy);
             Machine machine = new Machine(proxy);
 
             GamePad gamepad = new GamePad(machine);

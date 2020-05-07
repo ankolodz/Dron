@@ -48,6 +48,7 @@ namespace DronApp
             Engine3.Value = arr[2];
             Engine4.Value = arr[3];
 
+
             Engine1.SubscriptText = (arr[0] * 100 / 255).ToString();
             Engine2.SubscriptText = (arr[1] * 100 / 255).ToString();
             Engine3.SubscriptText = (arr[2] * 100 / 255).ToString();

@@ -80,6 +80,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comunication\Client.cs" />
+    <Compile Include="Comunication\UART.cs" />
+    <Compile Include="Comunication\UDP.cs" />
     <Compile Include="Comunication\Proxy.cs" />
     <Compile Include="ControllManager\GamePadController.cs" />
     <Compile Include="ControllManager\iController.cs" />
