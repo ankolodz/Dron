@@ -119,9 +119,6 @@ namespace DronApp
 
         private void ThrotleHendler(object sender, KeyEventArgs e)
         {               
-
-            
-
             SetRudder(proxy.getMachine().flyController.getVerticalDirection(), proxy.getMachine().flyController.getHorizontalDirection());
             System.Threading.Thread.Sleep(100);
             
@@ -131,7 +128,17 @@ namespace DronApp
 
         private void sendFrame_Click(object sender, EventArgs e)
         {
-            proxy.getMachine().STOP();            
+            byte val1 = byte.Parse(x1.Text);
+            byte val2 = byte.Parse(x2.Text);
+            byte val3 = byte.Parse(x3.Text);
+            byte[] arr = { 130, val1, val2, val3, 0, 0 };
+            arr[5] = Convert.ToByte((arr[0]+arr[1]+arr[2]+arr[3]+arr[4]+arr[5]) % 256);
+            proxy.getUDP().sendMessage(arr,6);        
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     };
 }

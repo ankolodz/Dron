@@ -147,6 +147,7 @@ namespace DronApp.ControlManager
                 lastDirect = i.GetPointOfViewControllers()[0];
 
                 if (i.IsPressed(1))
+                    machine.engine.STOP();
                     machine.flyController.STOP();
 
             }

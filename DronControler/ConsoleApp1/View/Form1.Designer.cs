@@ -98,6 +98,7 @@
             // update
             // 
             this.update.Enabled = true;
+            this.update.Interval = 200;
             this.update.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // gyroscop
@@ -198,6 +199,7 @@
             this.Engine1.TabIndex = 25;
             this.Engine1.Text = " ";
             this.Engine1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.Engine1.Value = 68;
             // 
             // Engine3
             // 
@@ -230,6 +232,7 @@
             this.Engine3.TabIndex = 27;
             this.Engine3.Text = " ";
             this.Engine3.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.Engine3.Value = 68;
             // 
             // Engine2
             // 
@@ -262,6 +265,7 @@
             this.Engine2.TabIndex = 29;
             this.Engine2.Text = " ";
             this.Engine2.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.Engine2.Value = 68;
             // 
             // Engine4
             // 
@@ -294,6 +298,7 @@
             this.Engine4.TabIndex = 30;
             this.Engine4.Text = " ";
             this.Engine4.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.Engine4.Value = 68;
             // 
             // Throtle
             // 
@@ -326,6 +331,7 @@
             this.Throtle.TabIndex = 31;
             this.Throtle.Text = " ";
             this.Throtle.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.Throtle.Value = 68;
             // 
             // Form1
             // 
@@ -354,6 +360,7 @@
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Dron-APP";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ThrotleHendler);
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).EndInit();
