@@ -41,12 +41,16 @@ namespace DronApp
 
         public void down(int N)
         {
+            if (throtle <= 30)
+                return;
             throtle = (byte)Math.Max(0, throtle - N);
 
         }
 
         public void up(int N)
         {
+            if (throtle == 0)
+                return;
             throtle = (byte)Math.Min(255, throtle + N);
         }
 

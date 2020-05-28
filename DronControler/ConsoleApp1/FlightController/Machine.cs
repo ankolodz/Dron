@@ -12,6 +12,7 @@ namespace DronApp
         public readonly EngineManager engine;
         public readonly Gyroscope gyroscope;
         public readonly FlyManager flyController;
+        private Boolean readyForStart = false;
 
 
         public Machine (Proxy proxy){
@@ -45,6 +46,20 @@ namespace DronApp
         {
             engine.STOP();
             flyController.STOP();
+            readyForStart = false;
+        }
+        public void start(bool power)
+        {
+            if (readyForStart == false && power == false)
+            {
+                readyForStart = true;
+                return;
+            }
+            if (power == true && readyForStart == true)
+            {
+                flyController.setThrotle(40);
+            }
+        
         }
 
         

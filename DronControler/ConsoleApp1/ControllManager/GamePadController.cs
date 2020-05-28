@@ -16,6 +16,7 @@ namespace DronApp.ControlManager
         private Thread t;
         private int accurancyThrotle = 10, accurancyRudder = 80;
         private int oX, oY, sX, sY, lastDirect;
+        private int staticX = 0, staticY = 0;
 
 
         public GamePad(Machine machine)
@@ -100,12 +101,12 @@ namespace DronApp.ControlManager
             if (oX != convert(state.Z, accurancyRudder))
             {
                 oX = convert(state.Z, accurancyRudder);
-                machine.flyController.setHorizontal(oX);
+                machine.flyController.setHorizontal(oX + staticX);//REAPIR!!!!!!!!!!!!!!!!!!!!!!
             }
             if (oY != convert(state.RotationZ, accurancyRudder))
             {
                 oY = convert(state.RotationZ, accurancyRudder);
-                machine.flyController.setVertical(oY);
+                machine.flyController.setVertical(oY + staticY);
             }
         }
 
@@ -134,21 +135,35 @@ namespace DronApp.ControlManager
                 {
                     switch (lastDirect)
                     {
-                        //single throtle
+                        //change horizont
                         case 0:
-                            machine.flyController.upThrotle(2);
+                            staticY -= 1;
                             break;
                         case 18000:
-                            machine.flyController.downThrotle(2);
+                            staticY += 1;
                             break;
-
+                        case 9000:
+                            staticX += 1;
+                            break;
+                        case 27000:
+                            staticX -= 1;
+                            break;
+                            
                     }
+                    machine.flyController.setHorizontal(oX + staticX);
+                    machine.flyController.setVertical(oY + staticY);
                 }
                 lastDirect = i.GetPointOfViewControllers()[0];
+                if (i.IsPressed(0))
+                    machine.start(true);
+                if (i.IsPressed(5))
+                    machine.start(false);
 
                 if (i.IsPressed(1))
+                {
                     machine.engine.STOP();
                     machine.flyController.STOP();
+                }
 
             }
         }

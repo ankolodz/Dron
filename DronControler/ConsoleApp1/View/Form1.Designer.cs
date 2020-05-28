@@ -32,10 +32,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.vertical = new System.Windows.Forms.PictureBox();
             this.horizontal = new System.Windows.Forms.PictureBox();
-            this.x1 = new System.Windows.Forms.TextBox();
-            this.x2 = new System.Windows.Forms.TextBox();
-            this.x3 = new System.Windows.Forms.TextBox();
-            this.sendFrame = new System.Windows.Forms.Button();
             this.Engine1 = new CircularProgressBar.CircularProgressBar();
             this.Engine3 = new CircularProgressBar.CircularProgressBar();
             this.Engine2 = new CircularProgressBar.CircularProgressBar();
@@ -53,7 +49,7 @@
             this.PanicButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.PanicButton.Location = new System.Drawing.Point(613, 22);
             this.PanicButton.Name = "PanicButton";
-            this.PanicButton.Size = new System.Drawing.Size(175, 74);
+            this.PanicButton.Size = new System.Drawing.Size(286, 74);
             this.PanicButton.TabIndex = 4;
             this.PanicButton.Text = "STOP";
             this.PanicButton.UseVisualStyleBackColor = false;
@@ -137,37 +133,6 @@
             this.horizontal.TabIndex = 20;
             this.horizontal.TabStop = false;
             // 
-            // x1
-            // 
-            this.x1.Location = new System.Drawing.Point(688, 116);
-            this.x1.Name = "x1";
-            this.x1.Size = new System.Drawing.Size(100, 20);
-            this.x1.TabIndex = 21;
-            // 
-            // x2
-            // 
-            this.x2.Location = new System.Drawing.Point(688, 142);
-            this.x2.Name = "x2";
-            this.x2.Size = new System.Drawing.Size(100, 20);
-            this.x2.TabIndex = 22;
-            // 
-            // x3
-            // 
-            this.x3.Location = new System.Drawing.Point(688, 168);
-            this.x3.Name = "x3";
-            this.x3.Size = new System.Drawing.Size(100, 20);
-            this.x3.TabIndex = 23;
-            // 
-            // sendFrame
-            // 
-            this.sendFrame.Location = new System.Drawing.Point(688, 203);
-            this.sendFrame.Name = "sendFrame";
-            this.sendFrame.Size = new System.Drawing.Size(75, 23);
-            this.sendFrame.TabIndex = 24;
-            this.sendFrame.Text = "SEND";
-            this.sendFrame.UseVisualStyleBackColor = true;
-            this.sendFrame.Click += new System.EventHandler(this.sendFrame_Click);
-            // 
             // Engine1
             // 
             this.Engine1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
@@ -185,7 +150,7 @@
             this.Engine1.OuterColor = System.Drawing.Color.Gray;
             this.Engine1.OuterMargin = -25;
             this.Engine1.OuterWidth = 26;
-            this.Engine1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Engine1.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine1.ProgressWidth = 25;
             this.Engine1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine1.Size = new System.Drawing.Size(160, 153);
@@ -218,7 +183,7 @@
             this.Engine3.OuterColor = System.Drawing.Color.Gray;
             this.Engine3.OuterMargin = -25;
             this.Engine3.OuterWidth = 26;
-            this.Engine3.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Engine3.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine3.ProgressWidth = 25;
             this.Engine3.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine3.Size = new System.Drawing.Size(159, 155);
@@ -251,7 +216,7 @@
             this.Engine2.OuterColor = System.Drawing.Color.Gray;
             this.Engine2.OuterMargin = -25;
             this.Engine2.OuterWidth = 26;
-            this.Engine2.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Engine2.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine2.ProgressWidth = 25;
             this.Engine2.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine2.Size = new System.Drawing.Size(160, 153);
@@ -284,7 +249,7 @@
             this.Engine4.OuterColor = System.Drawing.Color.Gray;
             this.Engine4.OuterMargin = -25;
             this.Engine4.OuterWidth = 26;
-            this.Engine4.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Engine4.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine4.ProgressWidth = 25;
             this.Engine4.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine4.Size = new System.Drawing.Size(160, 153);
@@ -317,7 +282,7 @@
             this.Throtle.OuterColor = System.Drawing.Color.Gray;
             this.Throtle.OuterMargin = -25;
             this.Throtle.OuterWidth = 26;
-            this.Throtle.ProgressColor = System.Drawing.Color.Maroon;
+            this.Throtle.ProgressColor = System.Drawing.Color.DodgerBlue;
             this.Throtle.ProgressWidth = 25;
             this.Throtle.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Throtle.Size = new System.Drawing.Size(210, 192);
@@ -343,10 +308,6 @@
             this.Controls.Add(this.Engine2);
             this.Controls.Add(this.Engine3);
             this.Controls.Add(this.Engine1);
-            this.Controls.Add(this.sendFrame);
-            this.Controls.Add(this.x3);
-            this.Controls.Add(this.x2);
-            this.Controls.Add(this.x1);
             this.Controls.Add(this.horizontal);
             this.Controls.Add(this.vertical);
             this.Controls.Add(this.label5);
@@ -381,10 +342,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox vertical;
         private System.Windows.Forms.PictureBox horizontal;
-        private System.Windows.Forms.TextBox x1;
-        private System.Windows.Forms.TextBox x2;
-        private System.Windows.Forms.TextBox x3;
-        private System.Windows.Forms.Button sendFrame;
         private CircularProgressBar.CircularProgressBar Engine1;
         private CircularProgressBar.CircularProgressBar Engine3;
         private CircularProgressBar.CircularProgressBar Engine2;

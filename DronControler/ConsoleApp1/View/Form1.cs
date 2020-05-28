@@ -37,6 +37,7 @@ namespace DronApp
         {
             updateThrotle(proxy.getMachine().flyController.getThrotle());
             updateEngine(proxy.getMachine().engine.getEngineState());
+            updaterRudder(proxy.getMachine().flyController.getHorizontalDirection(), proxy.getMachine().flyController.getVerticalDirection());
             proxy.getMachine().sendToReal();
 
         }
@@ -48,6 +49,25 @@ namespace DronApp
             Engine3.Value = arr[2];
             Engine4.Value = arr[3];
 
+            if (arr[0] >= 200)
+                Engine1.ProgressColor = Color.OrangeRed;
+            else
+                Engine1.ProgressColor = Color.LimeGreen;
+
+            if (arr[1] >= 200)
+                Engine2.ProgressColor = Color.OrangeRed;
+            else
+                Engine2.ProgressColor = Color.LimeGreen;
+
+            if (arr[2] >= 200)
+                Engine3.ProgressColor = Color.OrangeRed;
+            else
+                Engine3.ProgressColor = Color.LimeGreen;
+
+            if (arr[3] >= 200)
+                Engine4.ProgressColor = Color.OrangeRed;
+            else
+                Engine4.ProgressColor = Color.LimeGreen;
 
             Engine1.SubscriptText = (arr[0] * 100 / 255).ToString();
             Engine2.SubscriptText = (arr[1] * 100 / 255).ToString();
@@ -88,7 +108,7 @@ namespace DronApp
             Refresh();
         }
 
-        public void SetRudder(byte y,byte x)
+        public void updaterRudder(byte x,byte y)
         {
             Pen bluePen = new Pen(Brushes.Blue);
             bluePen.Width = 2.0F;
@@ -119,22 +139,9 @@ namespace DronApp
 
         private void ThrotleHendler(object sender, KeyEventArgs e)
         {               
-            SetRudder(proxy.getMachine().flyController.getVerticalDirection(), proxy.getMachine().flyController.getHorizontalDirection());
-            System.Threading.Thread.Sleep(100);
             
         }
 
-
-
-        private void sendFrame_Click(object sender, EventArgs e)
-        {
-            byte val1 = byte.Parse(x1.Text);
-            byte val2 = byte.Parse(x2.Text);
-            byte val3 = byte.Parse(x3.Text);
-            byte[] arr = { 130, val1, val2, val3, 0, 0 };
-            arr[5] = Convert.ToByte((arr[0]+arr[1]+arr[2]+arr[3]+arr[4]+arr[5]) % 256);
-            proxy.getUDP().sendMessage(arr,6);        
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

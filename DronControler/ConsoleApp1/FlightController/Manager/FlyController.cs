@@ -46,6 +46,11 @@ namespace DronApp
             throtle.down(N);
             base.isChange();
         }
+        public void setThrotle(int val)
+        {
+            throtle.set((Byte)val);
+            base.isChange();
+        }
 
         //***rudder***
 
