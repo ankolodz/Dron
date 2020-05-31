@@ -47,6 +47,7 @@ namespace DronApp
             engine.STOP();
             flyController.STOP();
             readyForStart = false;
+            proxy.setOFF();
         }
         public void start(bool power)
         {
@@ -57,6 +58,7 @@ namespace DronApp
             }
             if (power == true && readyForStart == true)
             {
+                proxy.setON();
                 flyController.setThrotle(45);
             }
         

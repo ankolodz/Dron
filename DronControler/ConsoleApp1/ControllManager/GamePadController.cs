@@ -12,6 +12,7 @@ namespace DronApp.ControlManager
     {
         private Joystick joystick;
         private Machine machine;
+        private Proxy proxy;
 
         private Thread t;
         private int accurancyThrotle = 10, accurancyRudder = 80;
@@ -19,12 +20,14 @@ namespace DronApp.ControlManager
         private int staticX = 0, staticY = 0;
 
 
-        public GamePad(Machine machine)
+        public GamePad(Proxy proxy, Machine machine)
         {
+            this.proxy = proxy;
             this.machine = machine;
+            
         }
 
-        public GamePad(Machine machine, int accurancyThrotle, int accurancyRudder) : this(machine)
+        public GamePad(Proxy proxy, Machine machine, int accurancyThrotle, int accurancyRudder) : this(proxy, machine)
         {
             this.accurancyThrotle = accurancyThrotle;
             this.accurancyRudder = accurancyRudder;
@@ -90,7 +93,7 @@ namespace DronApp.ControlManager
                 leftStick(state);
                 testButtonsPress();           
 
-                Thread.Sleep(200);
+                Thread.Sleep(proxy.getSleepTime());
             }
         }
 
