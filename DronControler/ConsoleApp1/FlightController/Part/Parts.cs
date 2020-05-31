@@ -43,7 +43,7 @@ namespace DronApp
         {
             if (throtle <= 30)
                 return;
-            throtle = (byte)Math.Max(0, throtle - N);
+            throtle = (byte)Math.Max(30, throtle - N);
 
         }
 

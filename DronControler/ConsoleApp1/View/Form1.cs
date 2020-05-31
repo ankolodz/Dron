@@ -110,6 +110,8 @@ namespace DronApp
 
         public void updaterRudder(byte x,byte y)
         {
+            x -= 80;
+            y -= 80;
             Pen bluePen = new Pen(Brushes.Blue);
             bluePen.Width = 2.0F;
             Pen redPen = new Pen(Brushes.Red);
@@ -145,6 +147,20 @@ namespace DronApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Byte[] arr = new Byte[6];
+            arr[0] = 130;
+            arr[1] = Byte.Parse(x1.Text);
+            arr[2] = Byte.Parse(x2.Text);
+            arr[3] = Byte.Parse(x3.Text);
+            arr[4] = Byte.Parse(x4.Text);
+            arr[5] = Convert.ToByte(arr[0] + arr[1] + arr[2] + arr[3] + arr[4] % 256);
+            proxy.getUDP().sendMessage(arr, 6);
+
 
         }
     };

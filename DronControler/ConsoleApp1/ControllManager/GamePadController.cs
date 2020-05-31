@@ -98,14 +98,14 @@ namespace DronApp.ControlManager
         private void rightStick(JoystickState state)
         {
             //Maping rudder
-            if (oX != convert(state.Z, accurancyRudder))
+            if (oX != convert(state.Z, accurancyRudder,80))
             {
-                oX = convert(state.Z, accurancyRudder);
-                machine.flyController.setHorizontal(oX + staticX);//REAPIR!!!!!!!!!!!!!!!!!!!!!!
+                oX = convert(state.Z, accurancyRudder,80);
+                machine.flyController.setHorizontal(oX + staticX);
             }
-            if (oY != convert(state.RotationZ, accurancyRudder))
+            if (oY != convert(state.RotationZ, accurancyRudder,80))
             {
-                oY = convert(state.RotationZ, accurancyRudder);
+                oY = convert(state.RotationZ, accurancyRudder,80);
                 machine.flyController.setVertical(oY + staticY);
             }
         }
@@ -158,20 +158,21 @@ namespace DronApp.ControlManager
                     machine.start(true);
                 if (i.IsPressed(5))
                     machine.start(false);
-
+                if (i.IsPressed(3))
+                    machine.flyController.upThrotle(30);
                 if (i.IsPressed(1))
                 {
-                    machine.engine.STOP();
-                    machine.flyController.STOP();
+                    Console.WriteLine("okdsfs");
+                    machine.STOP();
                 }
 
             }
         }
 
-        private int convert(int val, int accurancy)
+        private int convert(int val, int accurancy, int zeros = 0)
         {
             int one = 65535 / accurancy;
-            return val / one;
+            return zeros + val / one;
         }
 
 

@@ -37,6 +37,11 @@
             this.Engine2 = new CircularProgressBar.CircularProgressBar();
             this.Engine4 = new CircularProgressBar.CircularProgressBar();
             this.Throtle = new CircularProgressBar.CircularProgressBar();
+            this.x1 = new System.Windows.Forms.TextBox();
+            this.x2 = new System.Windows.Forms.TextBox();
+            this.x3 = new System.Windows.Forms.TextBox();
+            this.x4 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontal)).BeginInit();
@@ -298,11 +303,55 @@
             this.Throtle.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.Throtle.Value = 68;
             // 
+            // x1
+            // 
+            this.x1.Location = new System.Drawing.Point(753, 127);
+            this.x1.Name = "x1";
+            this.x1.Size = new System.Drawing.Size(100, 20);
+            this.x1.TabIndex = 32;
+            // 
+            // x2
+            // 
+            this.x2.Location = new System.Drawing.Point(753, 155);
+            this.x2.Name = "x2";
+            this.x2.Size = new System.Drawing.Size(100, 20);
+            this.x2.TabIndex = 33;
+            // 
+            // x3
+            // 
+            this.x3.Location = new System.Drawing.Point(753, 181);
+            this.x3.Name = "x3";
+            this.x3.Size = new System.Drawing.Size(100, 20);
+            this.x3.TabIndex = 34;
+            // 
+            // x4
+            // 
+            this.x4.Location = new System.Drawing.Point(753, 207);
+            this.x4.Name = "x4";
+            this.x4.Size = new System.Drawing.Size(100, 20);
+            this.x4.TabIndex = 35;
+            this.x4.Text = "0";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(753, 230);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Send";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 581);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.x4);
+            this.Controls.Add(this.x3);
+            this.Controls.Add(this.x2);
+            this.Controls.Add(this.x1);
             this.Controls.Add(this.Throtle);
             this.Controls.Add(this.Engine4);
             this.Controls.Add(this.Engine2);
@@ -347,5 +396,10 @@
         private CircularProgressBar.CircularProgressBar Engine2;
         private CircularProgressBar.CircularProgressBar Engine4;
         private CircularProgressBar.CircularProgressBar Throtle;
+        private System.Windows.Forms.TextBox x1;
+        private System.Windows.Forms.TextBox x2;
+        private System.Windows.Forms.TextBox x3;
+        private System.Windows.Forms.TextBox x4;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -34,12 +34,12 @@ namespace DronApp
                 case 1:
                     engine.readMessage(message);
                     break;
-                case 2:
-                    gyroscope.readMessage(message);
-                    break;
-                default:
-                    Exception incorectMessageType = new Exception("Błąd typu ramki");
-                    throw incorectMessageType;
+               // case 2:
+                  // // gyroscope.readMessage(message);
+                   // break;
+               // default:
+                   // Exception incorectMessageType = new Exception("Błąd typu ramki");
+                   // throw incorectMessageType;
             }
         }
         public void STOP()
@@ -57,7 +57,7 @@ namespace DronApp
             }
             if (power == true && readyForStart == true)
             {
-                flyController.setThrotle(40);
+                flyController.setThrotle(45);
             }
         
         }
