@@ -31,10 +31,13 @@ namespace DronApp
         public void setON()
         {
             SLEEP = on;
+            udp.setState(State.active);
+            
         }
         public void setOFF()
         {
             SLEEP = off;
+            udp.setState(State.warning);
         }
         public int getSleepTime()
         {

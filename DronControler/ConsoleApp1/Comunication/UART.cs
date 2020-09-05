@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace DronApp.Comunication
 {
@@ -13,6 +9,8 @@ namespace DronApp.Comunication
         private int bid = 0;
         private SerialPort portCOM = new SerialPort();
         private Proxy proxy;
+        private State state;
+        private String portName;
 
         public UART(Proxy proxy)
         {
@@ -22,16 +20,21 @@ namespace DronApp.Comunication
         public void init()
         {
             var ports = SerialPort.GetPortNames();
-            for (int i1 = 0; i1 < ports.Length; i1++)            
+            for (int i1 = 0; i1 < ports.Length; i1++)
                 Console.WriteLine(ports[i1]);
-            
 
+            portName = Console.ReadLine();
+            run();
+        }
+
+        private void run()
+        {
             portCOM.ReadTimeout = 500;
             portCOM.WriteTimeout = 500;
             portCOM.BaudRate = 9600;
             portCOM.DataBits = 8;
             portCOM.StopBits = StopBits.One;
-            portCOM.PortName = Console.ReadLine();
+            portCOM.PortName = portName;
 
             portCOM.DataReceived += new SerialDataReceivedEventHandler(DataRecivedHandler);
 
@@ -51,6 +54,7 @@ namespace DronApp.Comunication
                     init();
                 }
             }
+            this.state = State.warning;
         }
 
         public void end()
@@ -66,7 +70,6 @@ namespace DronApp.Comunication
         }
         private void DataRecivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            // Console.WriteLine(portCOM.ReadExisting());
             byte[] arr = new byte[messageSize()];
             while (portCOM.BytesToRead < messageSize()) Thread.Sleep(1);
 
@@ -96,7 +99,34 @@ namespace DronApp.Comunication
             return 6;
         }
 
-        public void sendMessage(byte[] byteArr, int length) => portCOM.Write(byteArr, 0, length);
+        public void sendMessage(byte[] byteArr, int length)
+        {
+            try
+            {
+                portCOM.Write(byteArr, 0, length);
+            }
+            catch (Exception e)
+            {
+                this.state = State.error;
+                try
+                {
+                    end();
+                }
+                catch (Exception ex){
+                }
+                run();
+            }
+        }
+
+        public State getState()
+        {
+            return this.state;
+        }
+
+        public void setState(State state)
+        {
+            this.state = state;
+        }
     }
 }
 

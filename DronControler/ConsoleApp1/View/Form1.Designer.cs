@@ -22,14 +22,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.PanicButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.update = new System.Windows.Forms.Timer(this.components);
             this.gyroscop = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.vertical = new System.Windows.Forms.PictureBox();
             this.horizontal = new System.Windows.Forms.PictureBox();
             this.Engine1 = new CircularProgressBar.CircularProgressBar();
@@ -37,14 +36,11 @@
             this.Engine2 = new CircularProgressBar.CircularProgressBar();
             this.Engine4 = new CircularProgressBar.CircularProgressBar();
             this.Throtle = new CircularProgressBar.CircularProgressBar();
-            this.x1 = new System.Windows.Forms.TextBox();
-            this.x2 = new System.Windows.Forms.TextBox();
-            this.x3 = new System.Windows.Forms.TextBox();
-            this.x4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.connectionIco = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.connectionIco)).BeginInit();
             this.SuspendLayout();
             // 
             // PanicButton
@@ -52,7 +48,7 @@
             this.PanicButton.BackColor = System.Drawing.Color.DarkRed;
             this.PanicButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PanicButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.PanicButton.Location = new System.Drawing.Point(613, 22);
+            this.PanicButton.Location = new System.Drawing.Point(613, 495);
             this.PanicButton.Name = "PanicButton";
             this.PanicButton.Size = new System.Drawing.Size(286, 74);
             this.PanicButton.TabIndex = 4;
@@ -68,15 +64,6 @@
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Engine1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(595, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Engine2";
             // 
             // label3
             // 
@@ -105,25 +92,16 @@
             // gyroscop
             // 
             this.gyroscop.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gyroscop.Location = new System.Drawing.Point(10, 4);
+            this.gyroscop.Location = new System.Drawing.Point(42, 307);
             this.gyroscop.Name = "gyroscop";
             this.gyroscop.Size = new System.Drawing.Size(250, 250);
             this.gyroscop.TabIndex = 13;
             this.gyroscop.TabStop = false;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(750, 260);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Throtle";
-            // 
             // vertical
             // 
             this.vertical.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.vertical.Location = new System.Drawing.Point(117, 260);
+            this.vertical.Location = new System.Drawing.Point(471, 409);
             this.vertical.Name = "vertical";
             this.vertical.Size = new System.Drawing.Size(25, 160);
             this.vertical.TabIndex = 19;
@@ -132,7 +110,7 @@
             // horizontal
             // 
             this.horizontal.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.horizontal.Location = new System.Drawing.Point(48, 413);
+            this.horizontal.Location = new System.Drawing.Point(401, 544);
             this.horizontal.Name = "horizontal";
             this.horizontal.Size = new System.Drawing.Size(160, 25);
             this.horizontal.TabIndex = 20;
@@ -144,11 +122,11 @@
             this.Engine1.AnimationSpeed = 200;
             this.Engine1.BackColor = System.Drawing.Color.Transparent;
             this.Engine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Engine1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Engine1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Engine1.ForeColor = System.Drawing.Color.Transparent;
+            this.Engine1.InnerColor = System.Drawing.Color.Silver;
             this.Engine1.InnerMargin = 2;
             this.Engine1.InnerWidth = -1;
-            this.Engine1.Location = new System.Drawing.Point(392, 22);
+            this.Engine1.Location = new System.Drawing.Point(401, 4);
             this.Engine1.MarqueeAnimationSpeed = 2000;
             this.Engine1.Maximum = 255;
             this.Engine1.Name = "Engine1";
@@ -157,13 +135,14 @@
             this.Engine1.OuterWidth = 26;
             this.Engine1.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine1.ProgressWidth = 25;
+            this.Engine1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Engine1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine1.Size = new System.Drawing.Size(160, 153);
             this.Engine1.StartAngle = 270;
-            this.Engine1.SubscriptColor = System.Drawing.Color.Black;
+            this.Engine1.SubscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
             this.Engine1.SubscriptText = "0";
-            this.Engine1.SuperscriptColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Engine1.SuperscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.Engine1.SuperscriptText = "%";
             this.Engine1.TabIndex = 25;
@@ -177,11 +156,11 @@
             this.Engine3.AnimationSpeed = 200;
             this.Engine3.BackColor = System.Drawing.Color.Transparent;
             this.Engine3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Engine3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Engine3.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Engine3.ForeColor = System.Drawing.Color.Transparent;
+            this.Engine3.InnerColor = System.Drawing.Color.Silver;
             this.Engine3.InnerMargin = 2;
             this.Engine3.InnerWidth = -1;
-            this.Engine3.Location = new System.Drawing.Point(257, 155);
+            this.Engine3.Location = new System.Drawing.Point(266, 127);
             this.Engine3.MarqueeAnimationSpeed = 2000;
             this.Engine3.Maximum = 255;
             this.Engine3.Name = "Engine3";
@@ -190,13 +169,14 @@
             this.Engine3.OuterWidth = 26;
             this.Engine3.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine3.ProgressWidth = 25;
+            this.Engine3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Engine3.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine3.Size = new System.Drawing.Size(159, 155);
             this.Engine3.StartAngle = 270;
-            this.Engine3.SubscriptColor = System.Drawing.Color.Black;
+            this.Engine3.SubscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine3.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
             this.Engine3.SubscriptText = "0";
-            this.Engine3.SuperscriptColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Engine3.SuperscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine3.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.Engine3.SuperscriptText = "%";
             this.Engine3.TabIndex = 27;
@@ -210,11 +190,11 @@
             this.Engine2.AnimationSpeed = 200;
             this.Engine2.BackColor = System.Drawing.Color.Transparent;
             this.Engine2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Engine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Engine2.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Engine2.ForeColor = System.Drawing.Color.Transparent;
+            this.Engine2.InnerColor = System.Drawing.Color.Silver;
             this.Engine2.InnerMargin = 2;
             this.Engine2.InnerWidth = -1;
-            this.Engine2.Location = new System.Drawing.Point(537, 145);
+            this.Engine2.Location = new System.Drawing.Point(537, 132);
             this.Engine2.MarqueeAnimationSpeed = 2000;
             this.Engine2.Maximum = 255;
             this.Engine2.Name = "Engine2";
@@ -223,13 +203,14 @@
             this.Engine2.OuterWidth = 26;
             this.Engine2.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine2.ProgressWidth = 25;
+            this.Engine2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Engine2.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine2.Size = new System.Drawing.Size(160, 153);
             this.Engine2.StartAngle = 270;
-            this.Engine2.SubscriptColor = System.Drawing.Color.Black;
+            this.Engine2.SubscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine2.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
             this.Engine2.SubscriptText = "0";
-            this.Engine2.SuperscriptColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Engine2.SuperscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine2.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.Engine2.SuperscriptText = "%";
             this.Engine2.TabIndex = 29;
@@ -243,11 +224,11 @@
             this.Engine4.AnimationSpeed = 200;
             this.Engine4.BackColor = System.Drawing.Color.Transparent;
             this.Engine4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Engine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Engine4.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Engine4.ForeColor = System.Drawing.Color.Transparent;
+            this.Engine4.InnerColor = System.Drawing.Color.Silver;
             this.Engine4.InnerMargin = 2;
             this.Engine4.InnerWidth = -1;
-            this.Engine4.Location = new System.Drawing.Point(392, 285);
+            this.Engine4.Location = new System.Drawing.Point(401, 260);
             this.Engine4.MarqueeAnimationSpeed = 2000;
             this.Engine4.Maximum = 255;
             this.Engine4.Name = "Engine4";
@@ -256,13 +237,14 @@
             this.Engine4.OuterWidth = 26;
             this.Engine4.ProgressColor = System.Drawing.Color.LimeGreen;
             this.Engine4.ProgressWidth = 25;
+            this.Engine4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Engine4.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Engine4.Size = new System.Drawing.Size(160, 153);
             this.Engine4.StartAngle = 270;
-            this.Engine4.SubscriptColor = System.Drawing.Color.Black;
+            this.Engine4.SubscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine4.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
             this.Engine4.SubscriptText = "0";
-            this.Engine4.SuperscriptColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Engine4.SuperscriptColor = System.Drawing.Color.WhiteSmoke;
             this.Engine4.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.Engine4.SuperscriptText = "%";
             this.Engine4.TabIndex = 30;
@@ -280,7 +262,7 @@
             this.Throtle.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Throtle.InnerMargin = 2;
             this.Throtle.InnerWidth = -1;
-            this.Throtle.Location = new System.Drawing.Point(679, 285);
+            this.Throtle.Location = new System.Drawing.Point(646, 291);
             this.Throtle.MarqueeAnimationSpeed = 2000;
             this.Throtle.Maximum = 255;
             this.Throtle.Name = "Throtle";
@@ -303,78 +285,47 @@
             this.Throtle.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.Throtle.Value = 68;
             // 
-            // x1
+            // connectionIco
             // 
-            this.x1.Location = new System.Drawing.Point(753, 127);
-            this.x1.Name = "x1";
-            this.x1.Size = new System.Drawing.Size(100, 20);
-            this.x1.TabIndex = 32;
-            // 
-            // x2
-            // 
-            this.x2.Location = new System.Drawing.Point(753, 155);
-            this.x2.Name = "x2";
-            this.x2.Size = new System.Drawing.Size(100, 20);
-            this.x2.TabIndex = 33;
-            // 
-            // x3
-            // 
-            this.x3.Location = new System.Drawing.Point(753, 181);
-            this.x3.Name = "x3";
-            this.x3.Size = new System.Drawing.Size(100, 20);
-            this.x3.TabIndex = 34;
-            // 
-            // x4
-            // 
-            this.x4.Location = new System.Drawing.Point(753, 207);
-            this.x4.Name = "x4";
-            this.x4.Size = new System.Drawing.Size(100, 20);
-            this.x4.TabIndex = 35;
-            this.x4.Text = "0";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(753, 230);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.connectionIco.BackColor = System.Drawing.Color.Red;
+            this.connectionIco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.connectionIco.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.connectionIco.Image = ((System.Drawing.Image)(resources.GetObject("connectionIco.Image")));
+            this.connectionIco.Location = new System.Drawing.Point(613, 12);
+            this.connectionIco.Name = "connectionIco";
+            this.connectionIco.Size = new System.Drawing.Size(66, 64);
+            this.connectionIco.TabIndex = 32;
+            this.connectionIco.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(911, 581);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.x4);
-            this.Controls.Add(this.x3);
-            this.Controls.Add(this.x2);
-            this.Controls.Add(this.x1);
+            this.Controls.Add(this.connectionIco);
+            this.Controls.Add(this.Engine3);
             this.Controls.Add(this.Throtle);
             this.Controls.Add(this.Engine4);
             this.Controls.Add(this.Engine2);
-            this.Controls.Add(this.Engine3);
             this.Controls.Add(this.Engine1);
             this.Controls.Add(this.horizontal);
             this.Controls.Add(this.vertical);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.gyroscop);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PanicButton);
             this.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
             this.KeyPreview = true;
             this.Name = "Form1";
-            this.Text = "Dron-APP";
+            this.Text = "S";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ThrotleHendler);
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.connectionIco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,12 +334,10 @@
         #endregion
         private System.Windows.Forms.Button PanicButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer update;
         private System.Windows.Forms.PictureBox gyroscop;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox vertical;
         private System.Windows.Forms.PictureBox horizontal;
         private CircularProgressBar.CircularProgressBar Engine1;
@@ -396,10 +345,6 @@
         private CircularProgressBar.CircularProgressBar Engine2;
         private CircularProgressBar.CircularProgressBar Engine4;
         private CircularProgressBar.CircularProgressBar Throtle;
-        private System.Windows.Forms.TextBox x1;
-        private System.Windows.Forms.TextBox x2;
-        private System.Windows.Forms.TextBox x3;
-        private System.Windows.Forms.TextBox x4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox connectionIco;
     }
 }

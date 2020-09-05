@@ -38,6 +38,7 @@ namespace DronApp
             updateThrotle(proxy.getMachine().flyController.getThrotle());
             updateEngine(proxy.getMachine().engine.getEngineState());
             updaterRudder(proxy.getMachine().flyController.getHorizontalDirection(), proxy.getMachine().flyController.getVerticalDirection());
+            connection(proxy.getUDP().getState());
             proxy.getMachine().sendToReal();
             update.Interval = proxy.getSleepTime();
 
@@ -63,8 +64,7 @@ namespace DronApp
                     break;
 
             }
-        }
-    
+        }    
 
 public void updateEngine(byte[] arr)
         {
@@ -106,6 +106,11 @@ public void updateEngine(byte[] arr)
             Throtle.Value = t;
             Throtle.SubscriptText = (t * 100 / 255).ToString();
             Refresh();
+        }
+
+        public void connection(State state)
+        {          
+            IcoUtils.setState(connectionIco, state);
         }
 
 
@@ -168,18 +173,5 @@ public void updateEngine(byte[] arr)
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Byte[] arr = new Byte[6];
-            arr[0] = 130;
-            arr[1] = Byte.Parse(x1.Text);
-            arr[2] = Byte.Parse(x2.Text);
-            arr[3] = Byte.Parse(x3.Text);
-            arr[4] = Byte.Parse(x4.Text);
-            arr[5] = Convert.ToByte((arr[0] + arr[1] + arr[2] + arr[3] + arr[4]) % 256);
-            proxy.getUDP().sendMessage(arr, 6);
-
-
-        }
     };
 }

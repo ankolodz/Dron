@@ -81,11 +81,12 @@
   <ItemGroup>
     <Compile Include="Comunication\Client.cs" />
     <Compile Include="Comunication\UART.cs" />
-    <Compile Include="Comunication\UDP.cs" />
     <Compile Include="Comunication\Proxy.cs" />
     <Compile Include="ControllManager\GamePadController.cs" />
     <Compile Include="ControllManager\iController.cs" />
-    <Compile Include="ControllManager\KeybordController.cs" />
+    <Compile Include="ControllManager\KeybordController.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FlightController\Gyroscope.cs" />
     <Compile Include="FlightController\Part\Controler.cs" />
     <Compile Include="FlightController\Machine.cs" />
@@ -112,6 +113,7 @@
     </Compile>
     <Compile Include="FlightController\Manager\FlyController.cs" />
     <Compile Include="FlightController\Manager\Component.cs" />
+    <Compile Include="View\Utils\IcoUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
