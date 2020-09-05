@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(326, 4);
+            this.label1.Location = new System.Drawing.Point(450, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 5;
@@ -72,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(493, 4);
+            this.label2.Location = new System.Drawing.Point(595, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 6;
@@ -81,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(326, 176);
+            this.label3.Location = new System.Drawing.Point(313, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 7;
@@ -90,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(493, 176);
+            this.label4.Location = new System.Drawing.Point(450, 260);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 8;
@@ -114,7 +114,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(416, 361);
+            this.label5.Location = new System.Drawing.Point(750, 260);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 15;
@@ -148,7 +148,7 @@
             this.Engine1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Engine1.InnerMargin = 2;
             this.Engine1.InnerWidth = -1;
-            this.Engine1.Location = new System.Drawing.Point(269, 22);
+            this.Engine1.Location = new System.Drawing.Point(392, 22);
             this.Engine1.MarqueeAnimationSpeed = 2000;
             this.Engine1.Maximum = 255;
             this.Engine1.Name = "Engine1";
@@ -181,7 +181,7 @@
             this.Engine3.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Engine3.InnerMargin = 2;
             this.Engine3.InnerWidth = -1;
-            this.Engine3.Location = new System.Drawing.Point(266, 203);
+            this.Engine3.Location = new System.Drawing.Point(257, 155);
             this.Engine3.MarqueeAnimationSpeed = 2000;
             this.Engine3.Maximum = 255;
             this.Engine3.Name = "Engine3";
@@ -214,7 +214,7 @@
             this.Engine2.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Engine2.InnerMargin = 2;
             this.Engine2.InnerWidth = -1;
-            this.Engine2.Location = new System.Drawing.Point(435, 22);
+            this.Engine2.Location = new System.Drawing.Point(537, 145);
             this.Engine2.MarqueeAnimationSpeed = 2000;
             this.Engine2.Maximum = 255;
             this.Engine2.Name = "Engine2";
@@ -247,7 +247,7 @@
             this.Engine4.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Engine4.InnerMargin = 2;
             this.Engine4.InnerWidth = -1;
-            this.Engine4.Location = new System.Drawing.Point(435, 205);
+            this.Engine4.Location = new System.Drawing.Point(392, 285);
             this.Engine4.MarqueeAnimationSpeed = 2000;
             this.Engine4.Maximum = 255;
             this.Engine4.Name = "Engine4";
@@ -280,7 +280,7 @@
             this.Throtle.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Throtle.InnerMargin = 2;
             this.Throtle.InnerWidth = -1;
-            this.Throtle.Location = new System.Drawing.Point(329, 377);
+            this.Throtle.Location = new System.Drawing.Point(679, 285);
             this.Throtle.MarqueeAnimationSpeed = 2000;
             this.Throtle.Maximum = 255;
             this.Throtle.Name = "Throtle";

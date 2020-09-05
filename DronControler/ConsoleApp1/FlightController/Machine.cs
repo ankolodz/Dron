@@ -54,11 +54,12 @@ namespace DronApp
             if (readyForStart == false && power == false)
             {
                 readyForStart = true;
+                proxy.setON();
                 return;
             }
             if (power == true && readyForStart == true)
             {
-                proxy.setON();
+                
                 flyController.setThrotle(45);
             }
         

@@ -18,14 +18,14 @@ namespace DronApp
 
         public Form1()
         {
-            
+
             InitializeComponent();
 
             //gyroscop = new PictureBox();
             SetGyroscope(125, 125);
 
         }
-        
+
 
         public void setProxy(Proxy proxy)
         {
@@ -42,7 +42,31 @@ namespace DronApp
             update.Interval = proxy.getSleepTime();
 
         }
-        public void updateEngine(byte[] arr)
+
+        private void ThrotleHendler(object sender, System.Windows.Forms.KeyEventArgs e) {
+            switch (e.KeyCode)
+            {
+                case Keys.A:
+                    proxy.getMachine().flyController.upThrotle();
+                    break;
+                case Keys.Z:
+                    proxy.getMachine().flyController.downThrotle();
+                    break;
+                case Keys.D1:
+                    proxy.getMachine().start(false);
+                    break;
+                case Keys.Q:
+                    proxy.getMachine().start(true);
+                    break;
+                default:
+                    proxy.getMachine().STOP();
+                    break;
+
+            }
+        }
+    
+
+public void updateEngine(byte[] arr)
         {
 
             Engine1.Value = arr[0];
@@ -139,13 +163,6 @@ namespace DronApp
         }
 
 
-
-        private void ThrotleHendler(object sender, KeyEventArgs e)
-        {               
-            
-        }
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -159,7 +176,7 @@ namespace DronApp
             arr[2] = Byte.Parse(x2.Text);
             arr[3] = Byte.Parse(x3.Text);
             arr[4] = Byte.Parse(x4.Text);
-            arr[5] = Convert.ToByte(arr[0] + arr[1] + arr[2] + arr[3] + arr[4] % 256);
+            arr[5] = Convert.ToByte((arr[0] + arr[1] + arr[2] + arr[3] + arr[4]) % 256);
             proxy.getUDP().sendMessage(arr, 6);
 
 

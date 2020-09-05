@@ -24,9 +24,9 @@ namespace DronApp
             this.machine = machine;
         }
 
-        private int SLEEP = 1500;
+        private int SLEEP = 200;
         private readonly int on = 200;
-        private readonly int off = 1500;
+        private readonly int off = 1000;
 
         public void setON()
         {

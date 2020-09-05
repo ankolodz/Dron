@@ -21,8 +21,14 @@ namespace DronApp
             Client client = new UART(proxy);
             Machine machine = new Machine(proxy);
 
-            GamePad gamepad = new GamePad(proxy,machine);
-            gamepad.init();
+            iController controller = new GamePad(proxy, machine);
+            controller.init();
+   /*         if (!controller.init()){
+                controller = new KeybordController(machine);
+                controller.init();
+            }*/
+
+            
 
             client.init();
             proxy.setUDP(client);
