@@ -87,7 +87,7 @@
             // 
             this.update.Enabled = true;
             this.update.Interval = 200;
-            this.update.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.update.Tick += new System.EventHandler(this.refresh);
             // 
             // gyroscop
             // 

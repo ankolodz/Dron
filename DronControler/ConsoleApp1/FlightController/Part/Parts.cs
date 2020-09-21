@@ -8,8 +8,7 @@ namespace DronApp
 
         public void down(int N = 5)
         {
-            enginePower = (byte) Math.Max(0, enginePower - N);
-            
+            enginePower = (byte) Math.Max(0, enginePower - N);            
         }
 
         public void up(int N = -5)

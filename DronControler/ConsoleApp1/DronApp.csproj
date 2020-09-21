@@ -93,6 +93,7 @@
     <Compile Include="FlightController\Manager\EngineMenager.cs" />
     <Compile Include="FlightController\DebugMode.cs" />
     <Compile Include="FlightController\Part\Parts.cs" />
+    <Compile Include="Parameters.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -113,7 +114,10 @@
     </Compile>
     <Compile Include="FlightController\Manager\FlyController.cs" />
     <Compile Include="FlightController\Manager\Component.cs" />
+    <Compile Include="View\Utils\GyroscopeDrawUtil.cs" />
     <Compile Include="View\Utils\IcoUtils.cs" />
+    <Compile Include="View\Utils\ProgressCircleUtils.cs" />
+    <Compile Include="View\Utils\RudderDrawUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -137,6 +141,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
