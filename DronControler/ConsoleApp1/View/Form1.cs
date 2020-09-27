@@ -8,12 +8,13 @@ namespace DronApp
     public partial class Form1 : Form
     {
         private Proxy proxy;
+        GyroscopeDrawUtil gyroscopeDrawUtil;
 
 
         public Form1()
         {     
             InitializeComponent();
-            SetGyroscope(125, 125);
+            this.gyroscopeDrawUtil = new GyroscopeDrawUtil(gyroscop, gyroFrame);
         }  
 
         public void setProxy(Proxy proxy)
@@ -24,7 +25,7 @@ namespace DronApp
         //update
         private void refresh(object sender, EventArgs e)
         {
-            GyroscopeDrawUtil.drawGyroscope(gyroscop, 0, 0);
+            gyroscopeDrawUtil.drawGyroscope(proxy.getMachine().gyroscope);
             updateThrotle(proxy.getMachine().flyController.getThrotle());
             updateEngine(proxy.getMachine().engine.getEngineState());
             updaterRudder(proxy.getMachine().flyController.getHorizontalDirection(), proxy.getMachine().flyController.getVerticalDirection());

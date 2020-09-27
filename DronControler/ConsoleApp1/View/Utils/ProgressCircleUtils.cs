@@ -10,7 +10,7 @@ namespace DronApp
             if (val >= Parameters.engineThreshold)
                 engine.ProgressColor = Parameters.engineHighColor;
             else
-                engine.ProgressColor = Parameters.engineHighColor;
+                engine.ProgressColor = Parameters.engineLowColor;
 
             engine.Value = val;
             engine.SubscriptText = (val * 100 / 255).ToString();

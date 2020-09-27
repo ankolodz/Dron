@@ -10,26 +10,74 @@ namespace DronApp
 {
     public class GyroscopeDrawUtil
     {
-        public static void drawGyroscope(PictureBox gyroscop, byte x, byte y)
+        private Image background;
+        private Image image;
+        private Image indicator;
+        private PictureBox gyroscop;
+        private PictureBox gyroFrame;
+
+        public GyroscopeDrawUtil(PictureBox gyroscop, PictureBox gyroFrame)
         {
-            Image image = new Bitmap("horyzont.png");
-            //image.RotateFlip(x);
+            this.background = Image.FromFile("horyzontBackground.png");
+            this.image = Image.FromFile("horyzont.png");
+            this.indicator = Image.FromFile("indicator.png");
+            this.gyroscop = gyroscop;
+            this.gyroFrame = gyroFrame;
+        }
+
+        public void drawGyroscope(Gyroscope gyroscopeParts)
+        {
+            int x = gyroscopeParts.getX();
+            int y = gyroscopeParts.getY();
+
+            y = Math.Min(y, 20);
+            y = Math.Max(y, -20);
+
+            if (Math.Abs(x) > 30 || Math.Abs(y) > 15)
+                setBackgroundAlert();
+            else
+                setBackgroundNeutral();          
 
             Bitmap flag = new Bitmap(250, 250);
-            Graphics flagGraphics = Graphics.FromImage(flag);
-      
+            Graphics g = Graphics.FromImage(flag);
 
-            flagGraphics.DrawImage(image, new Rectangle(-75, -75 + y, 400, 400));
-            drawHorisontLine(flagGraphics);
+            g.DrawImage(background, new Rectangle(0, 0, 250, 250));
+
+            g.TranslateTransform(125, 125);
+            g.RotateTransform(x);
+            g.TranslateTransform(-125, -125);
+
+            g.DrawImage(image, new Rectangle(-75, -75 + pixelFromDag(y), 400, 400));
+
+            g.TranslateTransform(125, 125);
+            g.RotateTransform(-x);
+            g.TranslateTransform(-125, -125);
+
+            g.DrawImage(indicator, new Rectangle(0, 0, 250, 250));
+
 
             gyroscop.Image = flag;
         }
-        private static void drawHorisontLine(Graphics flagGraphics)
-        {
-            Pen horisontPen = new Pen(Parameters.rudderNeutralPosition);
-            horisontPen.Width = 4.0F;
-            flagGraphics.DrawLine(horisontPen, new Point(0, 123), new Point(255, 123));
 
+        private void setBackgroundNeutral()
+        {
+            Console.WriteLine("Ok!");
+            if (gyroFrame.BackColor != Parameters.okState)
+                gyroFrame.BackColor = Parameters.okState;
+        }
+
+        private void setBackgroundAlert()
+        {
+            Console.WriteLine("Alert!");
+            if (gyroFrame.BackColor == Parameters.dangerState1)
+                gyroFrame.BackColor = Parameters.dangerState2;
+            else
+                gyroFrame.BackColor = Parameters.dangerState1;
+        }
+
+        private int pixelFromDag (int y)
+        {
+            return y * 10; //1 dag = 5 px
         }
     }
 }

@@ -66,7 +66,8 @@ namespace DronApp.Comunication
             int suma = 0;
             for (int i = 0; i < UART.messageSize() - 1; i++)
                 suma += message[i];
-            return suma % 256 != message[5] ? false : true;
+            //return suma % 256 != message[5] ? false : true;
+            return true;
         }
         private void DataRecivedHandler(object sender, SerialDataReceivedEventArgs e)
         {

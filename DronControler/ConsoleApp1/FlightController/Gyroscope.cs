@@ -9,8 +9,9 @@ namespace DronApp
     public class Gyroscope : Component
     {
         private byte type = 10;
-        private int x = 125;
-        private int y = 125;
+        private int x = 127;
+        private int y = 127;
+        private int z = 127;
 
         public override byte getType()
         {
@@ -19,17 +20,24 @@ namespace DronApp
 
         public override void readMessage(byte[] message)
         {
-            x = message[1];
-            y = message[2];
-
+            x = message[2];
+            y = message[3];
+            z = message[4];
         }
+
         public int getX()
         {
-            return x;
+            return x - Parameters.zeroGyroMaping;
         }
+
         public int getY()
         {
-            return y;
+            return y - Parameters.zeroGyroMaping;
+        }
+
+        public int getZ()
+        {
+            return z - Parameters.zeroGyroMaping;
         }
     };
 }

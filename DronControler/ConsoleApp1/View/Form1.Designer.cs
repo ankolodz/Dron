@@ -37,10 +37,12 @@
             this.Engine4 = new CircularProgressBar.CircularProgressBar();
             this.Throtle = new CircularProgressBar.CircularProgressBar();
             this.connectionIco = new System.Windows.Forms.PictureBox();
+            this.gyroFrame = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gyroscop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectionIco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gyroFrame)).BeginInit();
             this.SuspendLayout();
             // 
             // PanicButton
@@ -92,7 +94,8 @@
             // gyroscop
             // 
             this.gyroscop.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gyroscop.Location = new System.Drawing.Point(42, 307);
+            this.gyroscop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gyroscop.Location = new System.Drawing.Point(41, 307);
             this.gyroscop.Name = "gyroscop";
             this.gyroscop.Size = new System.Drawing.Size(250, 250);
             this.gyroscop.TabIndex = 13;
@@ -297,6 +300,15 @@
             this.connectionIco.TabIndex = 32;
             this.connectionIco.TabStop = false;
             // 
+            // gyroFrame
+            // 
+            this.gyroFrame.BackColor = System.Drawing.Color.Gray;
+            this.gyroFrame.Location = new System.Drawing.Point(31, 291);
+            this.gyroFrame.Name = "gyroFrame";
+            this.gyroFrame.Size = new System.Drawing.Size(271, 278);
+            this.gyroFrame.TabIndex = 33;
+            this.gyroFrame.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,6 +328,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PanicButton);
+            this.Controls.Add(this.gyroFrame);
             this.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -326,6 +339,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vertical)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectionIco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gyroFrame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,5 +360,6 @@
         private CircularProgressBar.CircularProgressBar Engine4;
         private CircularProgressBar.CircularProgressBar Throtle;
         private System.Windows.Forms.PictureBox connectionIco;
+        private System.Windows.Forms.PictureBox gyroFrame;
     }
 }
