@@ -29,7 +29,8 @@ namespace DronApp.Comunication
         }
 
         private void run()
-        {
+        {            
+            DebugMode.addLog("========================NOWY START========================");
             portCOM.ReadTimeout = 500;
             portCOM.WriteTimeout = 500;
             portCOM.BaudRate = 9600;
@@ -104,6 +105,7 @@ namespace DronApp.Comunication
         {
             return 8;
         }
+
         private void sendMsg()
         {
             try
@@ -136,9 +138,8 @@ namespace DronApp.Comunication
 
         public void setState(State state)
         {
-            this.state = state;
             sendMsg();
-            DebugMode.addLog("========================NOWY START========================");
+            this.state = state;
         }
     }
 }

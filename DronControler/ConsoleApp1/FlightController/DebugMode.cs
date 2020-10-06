@@ -7,28 +7,45 @@ namespace DronApp
     {
         public static void addLog(string message)
         {
-            StreamWriter SW = File.AppendText("./log.txt");
-            DateTime thisDay = DateTime.Today;
+            try
+            {
+                StreamWriter SW = File.AppendText("./log.txt");
+                DateTime thisDay = DateTime.Today;
 
-            SW.WriteLine(thisDay.ToString("D") + "  " + message);
+                SW.WriteLine(thisDay.ToString("D") + "  " + message);
+                SW.Close();
+            }
+            catch
+            {
+                addLog(message);
+            }
+            
 
         }
+
         public static void addLog(byte[] message)
         {
-                    StreamWriter SW = File.AppendText("./log.txt");
-            SW.WriteLine(MessageLog(message));
-            SW.Close();
+            try
+            {
+                StreamWriter SW = File.AppendText("./log.txt");
+                SW.WriteLine(MessageLog(message));
+                SW.Close();
+            }
+            catch
+            {
+               addLog(message);
+            }
         }
+
         private static string MessageLog (byte[] message)
         {
-            //DateTime thisDay = DateTime.Today;
             string newLog = "";
             foreach (byte i in message){
                 newLog += i + ", ";
             }
-             //= message; //thisDay.ToString("D")+"  "+message;
                 return newLog ;
         }
+
         public static void PrintOnConsole(byte[] arr)
         {
             String text = "";
