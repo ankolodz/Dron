@@ -11,6 +11,7 @@ namespace DronApp.Comunication
         private Proxy proxy;
         private State state;
         private String portName;
+        private byte[] dataToSend = { 1, 0, 0, 0, 0, 1 };
 
         public UART(Proxy proxy)
         {
@@ -63,9 +64,9 @@ namespace DronApp.Comunication
         }
         private bool controlSum(byte[] message)
         {
-            int suma = 0;
-            for (int i = 0; i < UART.messageSize() - 1; i++)
-                suma += message[i];
+            // int suma = 0;
+            // for (int i = 0; i < UART.messageSize() - 1; i++)
+            //    suma += message[i];
             //return suma % 256 != message[5] ? false : true;
             return true;
         }
@@ -78,7 +79,10 @@ namespace DronApp.Comunication
             try
             {
                 if (controlSum(arr))
-                    proxy.getMachine().messageHandler(arr);
+                     proxy.getMachine().messageHandler(arr);
+                DebugMode.addLog(arr);
+                sendMsg();
+
             }
             catch
             {
@@ -86,6 +90,7 @@ namespace DronApp.Comunication
                 {
                     Console.WriteLine("Błąd ramki");
                     portCOM.ReadExisting();
+                    sendMsg();
                 }
                 catch
                 {
@@ -97,14 +102,13 @@ namespace DronApp.Comunication
         }
         public static int messageSize()
         {
-            return 6;
+            return 8;
         }
-
-        public void sendMessage(byte[] byteArr, int length)
+        private void sendMsg()
         {
             try
             {
-                portCOM.Write(byteArr, 0, length);
+                portCOM.Write(dataToSend, 0, dataToSend.Length);
             }
             catch (Exception e)
             {
@@ -113,10 +117,16 @@ namespace DronApp.Comunication
                 {
                     end();
                 }
-                catch (Exception ex){
+                catch (Exception ex)
+                {
                 }
                 run();
             }
+        }
+
+        public void nextMessage(byte[] byteArr, int length)
+        {
+            this.dataToSend = byteArr;
         }
 
         public State getState()
@@ -127,6 +137,8 @@ namespace DronApp.Comunication
         public void setState(State state)
         {
             this.state = state;
+            sendMsg();
+            DebugMode.addLog("========================NOWY START========================");
         }
     }
 }

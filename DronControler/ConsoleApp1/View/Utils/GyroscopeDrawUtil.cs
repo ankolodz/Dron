@@ -44,13 +44,13 @@ namespace DronApp
             g.DrawImage(background, new Rectangle(0, 0, 250, 250));
 
             g.TranslateTransform(125, 125);
-            g.RotateTransform(x);
+            g.RotateTransform(-x);
             g.TranslateTransform(-125, -125);
 
             g.DrawImage(image, new Rectangle(-75, -75 + pixelFromDag(y), 400, 400));
 
             g.TranslateTransform(125, 125);
-            g.RotateTransform(-x);
+            g.RotateTransform(x);
             g.TranslateTransform(-125, -125);
 
             g.DrawImage(indicator, new Rectangle(0, 0, 250, 250));
@@ -61,14 +61,12 @@ namespace DronApp
 
         private void setBackgroundNeutral()
         {
-            Console.WriteLine("Ok!");
             if (gyroFrame.BackColor != Parameters.okState)
                 gyroFrame.BackColor = Parameters.okState;
         }
 
         private void setBackgroundAlert()
         {
-            Console.WriteLine("Alert!");
             if (gyroFrame.BackColor == Parameters.dangerState1)
                 gyroFrame.BackColor = Parameters.dangerState2;
             else
@@ -77,7 +75,7 @@ namespace DronApp
 
         private int pixelFromDag (int y)
         {
-            return y * 10; //1 dag = 5 px
+            return -y * 10; //1 dag = 10 px
         }
     }
 }

@@ -27,20 +27,20 @@ namespace DronApp
         }
         public void messageHandler  (byte[] message)
         {
-            Console.WriteLine(message[0]+" "+message[1]+" " +message[2] + " "+message[3] + " " + message[4] + " " + message[5] + " ");
+            Console.WriteLine(message[0]+" "+message[1]+" " +message[2] + " "+message[3] + " " + message[4] + " " + message[5] + " "+message[6]+" "+message[7]);
 
-            switch (message[0])
-            {
-                case 1:
-                    engine.readMessage(message);
-                    break;
-                case 2:
+           /// switch (message[0])
+           // {
+                //case 1:
+                   // engine.readMessage(message);
+                   // break;
+               // case 2:
                     gyroscope.readMessage(message);
-                    break;
+                   // break;
                     // default:
                     // Exception incorectMessageType = new Exception("Błąd typu ramki");
                     // throw incorectMessageType;
-            }
+            //}
         }
         public void STOP()
         {

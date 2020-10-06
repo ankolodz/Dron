@@ -27,7 +27,7 @@ namespace DronApp
         {
             gyroscopeDrawUtil.drawGyroscope(proxy.getMachine().gyroscope);
             updateThrotle(proxy.getMachine().flyController.getThrotle());
-            updateEngine(proxy.getMachine().engine.getEngineState());
+            //updateEngine(proxy.getMachine().engine.getEngineState());
             updaterRudder(proxy.getMachine().flyController.getHorizontalDirection(), proxy.getMachine().flyController.getVerticalDirection());
             connection(proxy.getUDP().getState());
             proxy.getMachine().sendToReal();
@@ -94,7 +94,7 @@ namespace DronApp
 
         private void PanicButton_Click(object sender, EventArgs e)
         {
-            proxy.getMachine().STOP();
+           proxy.getMachine().STOP();
         }
 
 

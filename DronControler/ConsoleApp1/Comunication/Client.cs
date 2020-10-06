@@ -11,6 +11,6 @@ namespace DronApp
         State getState();
         void setState(State state);
         void init();
-        void sendMessage(byte[] byteArr, int length);
+        void nextMessage(byte[] byteArr, int length);
     }
 }

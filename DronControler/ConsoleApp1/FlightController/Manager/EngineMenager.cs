@@ -99,10 +99,10 @@ namespace DronApp
         {
             if (message[0] == typ && !manual)
             {
-                engines[0].set(message[1]);
-                engines[1].set(message[2]);
-                engines[2].set(message[3]);
-                engines[3].set(message[4]);
+                engines[0].set(message[0]);
+                engines[1].set(message[1]);
+                engines[2].set(message[2]);
+                engines[3].set(message[3]);
             }
         }
 

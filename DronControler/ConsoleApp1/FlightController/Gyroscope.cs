@@ -20,9 +20,9 @@ namespace DronApp
 
         public override void readMessage(byte[] message)
         {
-            x = message[2];
-            y = message[3];
-            z = message[4];
+            y = message[4];
+            x = message[5];
+            z = message[6];
         }
 
         public int getX()
