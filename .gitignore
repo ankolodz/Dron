@@ -59,3 +59,8 @@ BananaPiSocketDron/BananaPiSocketDron/Properties/AssemblyInfo.cs
 BananaPiSocketDron/BananaPiSocketDron/Server.cs
 BananaPiSocketDron/BananaPiSocketDron/UART.cs
 DronControler/ConsoleApp1/obj/Debug/DronApp.csproj.CoreCompileInputs.cache
+*.ide-shm
+DronControler/.vs/ConsoleApp1/v15/.suo
+DronControler/.vs/ConsoleApp1/v15/.suo
+*.ide-shm
+*.ide-shm
