@@ -50,17 +50,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-BananaPiSocketDron/BananaPiSocketDron.sln
-BananaPiSocketDron/BananaPiSocketDron/App.config
-BananaPiSocketDron/BananaPiSocketDron/BananaPiSocketDron.csproj
-BananaPiSocketDron/BananaPiSocketDron/DebugMode.cs
-BananaPiSocketDron/BananaPiSocketDron/Program.cs
-BananaPiSocketDron/BananaPiSocketDron/Properties/AssemblyInfo.cs
-BananaPiSocketDron/BananaPiSocketDron/Server.cs
-BananaPiSocketDron/BananaPiSocketDron/UART.cs
-DronControler/ConsoleApp1/obj/Debug/DronApp.csproj.CoreCompileInputs.cache
-*.ide-shm
-DronControler/.vs/ConsoleApp1/v15/.suo
-DronControler/.vs/ConsoleApp1/v15/.suo
-*.ide-shm
-*.ide-shm

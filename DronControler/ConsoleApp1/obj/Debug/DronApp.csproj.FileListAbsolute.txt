@@ -30,3 +30,4 @@ C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\DronApp.cspr
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\DronApp.csproj.CopyComplete
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Users\sara\source\repos\Dron\DronControler\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\Sara\Documents\GitHub\Dron\DronControler\ConsoleApp1\obj\Debug\DronApp.SelectDialog.resources

@@ -1,5 +1,4 @@
-﻿using DronApp.Comunication;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +8,15 @@ namespace DronApp
 {
     public class Proxy
     {
-        private Client udp = null;
-        private Machine machine = null;
+        private SendMessageService messageService;
+        private Machine machine;
 
-        public Client getUDP() => udp;
+        public bool active = true;
+        public SendMessageService GetMessageService() => this.messageService;
         public Machine getMachine() => machine;
 
-        public void setUDP(Client client){
-            this.udp = client;
+        public void SetMessageService(SendMessageService messageService){
+            this.messageService = messageService;
         }
 
 
@@ -31,13 +31,13 @@ namespace DronApp
         public void setON()
         {
             SLEEP = on;
-            udp.setState(State.active);           
+            // udp.setState(State.active);           
             
         }
         public void setOFF()
         {
             SLEEP = off;
-            udp.setState(State.warning);
+            // udp.setState(State.warning);
         }
         public int getSleepTime()
         {

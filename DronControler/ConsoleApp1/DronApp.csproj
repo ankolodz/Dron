@@ -80,8 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comunication\Client.cs" />
-    <Compile Include="Comunication\UART.cs" />
-    <Compile Include="Comunication\Proxy.cs" />
+    <Compile Include="Comunication\MessageScheduler.cs" />
+    <Compile Include="Comunication\MessageService.cs" />
+    <Compile Include="Comunication\MessageServiceInterfaces.cs" />
+    <Compile Include="Proxy.cs" />
     <Compile Include="ControllManager\GamePadController.cs" />
     <Compile Include="ControllManager\iController.cs" />
     <Compile Include="ControllManager\KeybordController.cs">
@@ -114,6 +116,12 @@
     </Compile>
     <Compile Include="FlightController\Manager\FlyController.cs" />
     <Compile Include="FlightController\Manager\Component.cs" />
+    <Compile Include="View\SelectDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SelectDialog.Designer.cs">
+      <DependentUpon>SelectDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Utils\GyroscopeDrawUtil.cs" />
     <Compile Include="View\Utils\IcoUtils.cs" />
     <Compile Include="View\Utils\ProgressCircleUtils.cs" />
@@ -136,6 +144,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SelectDialog.resx">
+      <DependentUpon>SelectDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

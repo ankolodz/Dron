@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DronApp.Comunication;
 using DronApp.ControlManager;
 
 namespace DronApp
@@ -18,7 +17,7 @@ namespace DronApp
 
             Proxy proxy = new Proxy();
 
-            Client client = new UART(proxy);
+            MessageService messageService = new MessageService(proxy);
             Machine machine = new Machine(proxy);
 
             iController controller = new GamePad(proxy, machine);
@@ -30,8 +29,8 @@ namespace DronApp
 
             
 
-            client.init();
-            proxy.setUDP(client);
+            //client.init();
+            //proxy.setUDP(client);
             proxy.setMachine(machine);
 
             Form1 form = new Form1();

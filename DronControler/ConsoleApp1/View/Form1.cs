@@ -29,7 +29,7 @@ namespace DronApp
             updateThrotle(proxy.getMachine().flyController.getThrotle());
             //updateEngine(proxy.getMachine().engine.getEngineState());
             updaterRudder(proxy.getMachine().flyController.getHorizontalDirection(), proxy.getMachine().flyController.getVerticalDirection());
-            connection(proxy.getUDP().getState());
+            // connection(proxy.getUDP().getState());
             proxy.getMachine().sendToReal();
             update.Interval = proxy.getSleepTime();
             Refresh();

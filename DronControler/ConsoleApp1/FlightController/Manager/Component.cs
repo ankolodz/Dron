@@ -24,7 +24,7 @@ namespace DronApp
             byteMessage[4] = part4;
             byteMessage[5] = Convert.ToByte((getType() + part1 + part2 + part3 +part4)% 256);
 
-            proxy.getUDP().nextMessage(byteMessage, 6);
+            proxy.GetMessageService().newMessage(byteMessage, SenderId.MESSAGE);
         }
         public void isChange(){
             change = true;
