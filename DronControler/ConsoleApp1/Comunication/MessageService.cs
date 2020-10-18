@@ -8,22 +8,23 @@ using System.Threading.Tasks;
 
 namespace DronApp
 {
-    public class MessageService
+    public class MessageService: ServiceState
     {
         private MessageScheduler schreduler;
         private SerialPort portCOM = new SerialPort();
         private Proxy proxy;
-        private State state;
+        private State state { get; set; }
         private Thread sendlerThread;
 
         private String portName;
         private int bid = 0;
         private object usingCOM = new object();
+        private bool active = false;
 
         public MessageService(Proxy proxy)
         {
             this.schreduler = new MessageScheduler();
-            proxy.SetMessageService(schreduler);
+            proxy.SetMessageService(schreduler, this);
             this.proxy = proxy;
             this.portCOM = new SerialPort();
             getPortName();
@@ -69,6 +70,7 @@ namespace DronApp
                 }
             }
             this.state = State.warning;
+            this.setOFF();
             this.sendlerThread = new Thread(this.sendHandler);
             this.sendlerThread.Start();
         }
@@ -104,8 +106,12 @@ namespace DronApp
                     while (true)
                     {
                         byte[] dataToSend = schreduler.getNextMessage();
-                        if (state == State.warning)
+                        if (!active)
+                        {
                             Thread.Sleep(Parameters.sleepMessageTime);
+                            Console.WriteLine("W!");
+                        }
+                            
                         portCOM.Write(dataToSend, 0, dataToSend.Length);
                         Monitor.Wait(usingCOM, Parameters.lostMessageTimeout);
                     }
@@ -132,6 +138,23 @@ namespace DronApp
         {
             this.sendlerThread.Abort();
             this.portCOM.Close();
+        }
+
+        public void setON()
+        {
+            this.active = true;
+            this.state = State.active;
+        }
+
+        public void setOFF()
+        {
+            this.active = false;
+            this.state = State.warning;
+        }
+
+        public State getState()
+        {
+            return this.state;
         }
     }
 }

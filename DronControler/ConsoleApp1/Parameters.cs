@@ -9,6 +9,9 @@ namespace DronApp
 {
     public class Parameters
     {
+        //view
+        public const int refreshView = 200;
+        public const int refreshViewSleep = 1000;
         //engine 
         public static Color engineLowColor = Color.LimeGreen;
         public static Color engineHighColor = Color.Red;
@@ -27,7 +30,7 @@ namespace DronApp
         //message
         public const int portRefreshTimout = 100;
         public const int messageSize = 8;
-        public const int lostMessageTimeout = 200;
+        public const int lostMessageTimeout = 1100;
         public const int sleepMessageTime = 1000;
     }
 

@@ -79,7 +79,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comunication\Client.cs" />
     <Compile Include="Comunication\MessageScheduler.cs" />
     <Compile Include="Comunication\MessageService.cs" />
     <Compile Include="Comunication\MessageServiceInterfaces.cs" />
