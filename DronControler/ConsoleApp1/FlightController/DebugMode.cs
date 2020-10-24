@@ -1,43 +1,49 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 namespace DronApp
 {
-    static class DebugMode
+    public class DebugModule
     {
-        public static void addLog(string message)
+        private Queue<String> queue;
+
+        public DebugModule()
         {
-            try
-            {
-                StreamWriter SW = File.AppendText("./log.txt");
-                DateTime thisDay = DateTime.Today;
-
-                SW.WriteLine(thisDay.ToString("D") + "  " + message);
-                SW.Close();
-            }
-            catch
-            {
-                addLog(message);
-            }
-            
-
+            this.queue = new Queue<String>();
         }
 
-        public static void addLog(byte[] message)
+        public void addLog(Byte[] message)
         {
-            try
-            {
-                StreamWriter SW = File.AppendText("./log.txt");
-                SW.WriteLine(MessageLog(message));
-                SW.Close();
-            }
-            catch
-            {
-               addLog(message);
-            }
+            string timestamp = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                                            CultureInfo.InvariantCulture);
+            this.queue.Enqueue(timestamp + " " + MessageLog(message));
         }
 
-        private static string MessageLog (byte[] message)
+        public void addLog(string message)
+        {
+            string timestamp = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                                CultureInfo.InvariantCulture);
+            this.queue.Enqueue(timestamp + " " + message);
+            saveToFile();           
+        }
+
+        public void saveToFile()
+        {
+            StreamWriter SW = File.AppendText("./log" + DateTime.Now + ".txt");
+
+            foreach(String s in queue)
+            {
+                SW.WriteLine(s);
+            }
+            SW.Close();
+            queue.Clear();
+        }
+
+
+        private string MessageLog (byte[] message)
         {
             string newLog = "";
             foreach (byte i in message){

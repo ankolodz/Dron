@@ -11,14 +11,22 @@ namespace DronApp
         private SendMessageService messageService;
         private ServiceState serviceState;
         private Machine machine;
+        private DebugModule debug;
             
         public bool active = true;
         public SendMessageService GetMessageService() => this.messageService;
         public Machine getMachine() => machine;
 
+        public DebugModule getDebug() => debug;
+
         public void SetMessageService(SendMessageService messageService, ServiceState serviceState){
             this.messageService = messageService;
             this.serviceState = serviceState;
+        }
+
+        public void setDebugModule(DebugModule debugModule)
+        {
+            this.debug = debugModule;
         }
 
 

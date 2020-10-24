@@ -84,14 +84,14 @@ namespace DronApp
                         engines[1].down();
                         engines[2].down();
                         engines[3].down();
-                        break;
+                        break; 
                 }
             base.isChange();
         }
 
         public void STOP()
-        {           
-            base.SendComend(proxy, 0, 0, 0, 0);
+        {   
+            base.SendComend(proxy, 0, 0, 0, 0, SenderId.ALERT);
 
         }
 

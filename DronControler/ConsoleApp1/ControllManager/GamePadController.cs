@@ -145,7 +145,7 @@ namespace DronApp.ControlManager
                         case 18000:
                             staticY += 1;
                             break;
-                        case 9000:
+                        case 9000: 
                             staticX += 1;
                             break;
                         case 27000:
@@ -162,7 +162,7 @@ namespace DronApp.ControlManager
                 if (i.IsPressed(5))
                     machine.start(false);
                 if (i.IsPressed(3))
-                    machine.flyController.upThrotle(30);
+                    machine.flyController.setThrotle(140); //.upThrotle(30);
                 if (i.IsPressed(1))
                 {
                     Console.WriteLine("okdsfs");

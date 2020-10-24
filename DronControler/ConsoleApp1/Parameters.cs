@@ -28,10 +28,10 @@ namespace DronApp
         public static Color okState = Color.Gray;
 
         //message
-        public const int portRefreshTimout = 100;
+        public const int portRefreshTimeOut = 100;
         public const int messageSize = 8;
         public const int lostMessageTimeout = 1100;
-        public const int sleepMessageTime = 1000;
+        public const int sleepSlowMessageTime = 500;
     }
 
     public class ErrorDebugMessage

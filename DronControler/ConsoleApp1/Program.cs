@@ -16,6 +16,7 @@ namespace DronApp
             Application.SetCompatibleTextRenderingDefault(false);
 
             Proxy proxy = new Proxy();
+            proxy.setDebugModule(new DebugModule());
 
             MessageService messageService = new MessageService(proxy);
             Machine machine = new Machine(proxy);
@@ -26,11 +27,7 @@ namespace DronApp
                 controller = new KeybordController(machine);
                 controller.init();
             }*/
-
-            
-
-            //client.init();
-            //proxy.setUDP(client);
+          
             proxy.setMachine(machine);
 
             Form1 form = new Form1();

@@ -13,13 +13,13 @@ namespace DronApp
         private MessageScheduler schreduler;
         private SerialPort portCOM = new SerialPort();
         private Proxy proxy;
-        private State state { get; set; }
-        private Thread sendlerThread;
+        private State state { get; set; }//TODO i=ogarnij to geniuszu
+        private Thread senderThread;
 
         private String portName;
         private int bid = 0;
         private object usingCOM = new object();
-        private bool active = false;
+        private bool activeFastMode = false;
 
         public MessageService(Proxy proxy)
         {
@@ -44,7 +44,6 @@ namespace DronApp
         private void run()
         {
             Console.WriteLine("OK");
-            DebugMode.addLog("========================NOWY START========================");
             portCOM.ReadTimeout = 500;
             portCOM.WriteTimeout = 500;
             portCOM.BaudRate = 9600;
@@ -61,30 +60,31 @@ namespace DronApp
             catch (Exception e)
             {
                 this.state = State.error;
-                DebugMode.addLog(ErrorDebugMessage.portNotReplyError);
+                proxy.getDebug().addLog(ErrorDebugMessage.portNotReplyError);
                 if (bid < 10)
                 {
                     bid++;
-                    Thread.Sleep(Parameters.portRefreshTimout);
+                    Thread.Sleep(Parameters.portRefreshTimeOut);
                     run();
                 }
             }
             this.state = State.warning;
             this.setOFF();
-            this.sendlerThread = new Thread(this.sendHandler);
-            this.sendlerThread.Start();
+            this.senderThread = new Thread(this.sendHandler);
+            this.senderThread.Start();
         }
 
         private void MessageRecivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             lock (usingCOM)
             {
+                if (this.portCOM.BytesToRead < 8)
+                    return;
                 byte[] arr = readMsg();
 
                 if (controlSum(arr))
                     proxy.getMachine().messageHandler(arr);
-                DebugMode.addLog(arr);
-
+                proxy.getDebug().addLog(arr);
                 Monitor.Pulse(usingCOM);
             }                 
         }
@@ -106,10 +106,11 @@ namespace DronApp
                     while (true)
                     {
                         byte[] dataToSend = schreduler.getNextMessage();
-                        if (!active)
+                        proxy.getDebug().addLog(dataToSend);
+                        if (!activeFastMode)
                         {
-                            Thread.Sleep(Parameters.sleepMessageTime);
-                            Console.WriteLine("W!");
+                            Thread.Sleep(Parameters.sleepSlowMessageTime);
+                           // Console.WriteLine("W!");
                         }
                             
                         portCOM.Write(dataToSend, 0, dataToSend.Length);
@@ -117,9 +118,9 @@ namespace DronApp
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                DebugMode.addLog(ErrorDebugMessage.lostConnection);
+                proxy.getDebug().addLog(ErrorDebugMessage.lostConnection);
                 this.close();
                 this.run();
             }
@@ -136,20 +137,22 @@ namespace DronApp
 
         public void close()
         {
-            this.sendlerThread.Abort();
+            this.senderThread.Abort();
             this.portCOM.Close();
         }
 
         public void setON()
         {
-            this.active = true;
+            proxy.getDebug().addLog("========================NOWY START========================");
+            this.activeFastMode = true;
             this.state = State.active;
         }
 
         public void setOFF()
         {
-            this.active = false;
+            this.activeFastMode = false;
             this.state = State.warning;
+            proxy.getDebug().saveToFile();
         }
 
         public State getState()
