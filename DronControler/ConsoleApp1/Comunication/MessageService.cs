@@ -48,6 +48,7 @@ namespace DronApp
             portCOM.WriteTimeout = 500;
             portCOM.BaudRate = 9600;
             portCOM.DataBits = 8;
+            portCOM.ReceivedBytesThreshold = Parameters.messageSize;
             portCOM.StopBits = StopBits.One;
             portCOM.PortName = portName;
             portCOM.DataReceived += new SerialDataReceivedEventHandler(MessageRecivedHandler);
