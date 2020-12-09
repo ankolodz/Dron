@@ -14,7 +14,7 @@ namespace DronApp
 
         public abstract void readMessage(byte[] message);
 
-        public void SendComend(Proxy proxy, byte part1, byte part2, byte part3, byte part4, SenderId senderId = SenderId.PARAMETER)
+        public void SendComend(Mediator proxy, byte part1, byte part2, byte part3, byte part4, SenderId senderId = SenderId.PARAMETER)
         {
             byte[] byteMessage = new byte[6];
             byteMessage[0] = getType();

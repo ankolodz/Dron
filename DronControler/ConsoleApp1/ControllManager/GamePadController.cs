@@ -12,22 +12,23 @@ namespace DronApp.ControlManager
     {
         private Joystick joystick;
         private Machine machine;
-        private Proxy proxy;
+        private Mediator mediator;
 
         private Thread t;
+        private static int neutrallRudderPosition = 80;
         private int accurancyThrotle = 10, accurancyRudder = 80;
         private int oX, oY, sX, sY, lastDirect;
         private int staticX = 0, staticY = 0;
 
 
-        public GamePad(Proxy proxy, Machine machine)
+        public GamePad(Mediator proxy, Machine machine)
         {
-            this.proxy = proxy;
+            this.mediator = proxy;
             this.machine = machine;
             
         }
 
-        public GamePad(Proxy proxy, Machine machine, int accurancyThrotle, int accurancyRudder) : this(proxy, machine)
+        public GamePad(Mediator proxy, Machine machine, int accurancyThrotle, int accurancyRudder) : this(proxy, machine)
         {
             this.accurancyThrotle = accurancyThrotle;
             this.accurancyRudder = accurancyRudder;
@@ -93,7 +94,7 @@ namespace DronApp.ControlManager
                 leftStick(state);
                 testButtonsPress();           
 
-                Thread.Sleep(proxy.getSleepTime());
+                Thread.Sleep(mediator.getSleepTime());
             }
         }
 
@@ -101,14 +102,14 @@ namespace DronApp.ControlManager
         private void rightStick(JoystickState state)
         {
             //Maping rudder
-            if (oX != convert(state.Z, accurancyRudder,80))
+            if (oX != convert(state.Z, accurancyRudder, neutrallRudderPosition))
             {
-                oX = convert(state.Z, accurancyRudder,80);
+                oX = convert(state.Z, accurancyRudder, neutrallRudderPosition);
                 machine.flyController.setHorizontal(oX + staticX);
             }
-            if (oY != convert(state.RotationZ, accurancyRudder,80))
+            if (oY != convert(state.RotationZ, accurancyRudder, neutrallRudderPosition))
             {
-                oY = convert(state.RotationZ, accurancyRudder,80);
+                oY = convert(state.RotationZ, accurancyRudder, neutrallRudderPosition);
                 machine.flyController.setVertical(oY + staticY);
             }
         }
@@ -157,15 +158,14 @@ namespace DronApp.ControlManager
                     machine.flyController.setVertical(oY + staticY);
                 }
                 lastDirect = i.GetPointOfViewControllers()[0];
-                if (i.IsPressed(0))
+                if (i.IsPressed(Parameters.startBtn))
                     machine.start(true);
-                if (i.IsPressed(5))
+                if (i.IsPressed(Parameters.safeBtn))
                     machine.start(false);
-                if (i.IsPressed(3))
-                    machine.flyController.setThrotle(140); //.upThrotle(30);
+                if (i.IsPressed(Parameters.safePower))
+                    machine.flyController.setThrotle(Parameters.safePower); 
                 if (i.IsPressed(1))
                 {
-                    Console.WriteLine("okdsfs");
                     machine.STOP();
                 }
 

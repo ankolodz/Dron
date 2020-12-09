@@ -11,12 +11,12 @@ namespace DronApp
     {
         private byte typ=1;
         private Engine[] engines;
-        Proxy proxy;
+        Mediator proxy;
         private bool manual = false;
 
 
 
-        public EngineManager(Proxy proxy) {
+        public EngineManager(Mediator proxy) {
             this.proxy = proxy;
             this.engines = new Engine[4];
             for (int i = 0; i < 4; i++)

@@ -2,7 +2,7 @@
 
 namespace DronApp
 {
-    class Engine : Controler
+    class Engine : Part
     {
         private byte enginePower = 0;
 
@@ -30,7 +30,7 @@ namespace DronApp
 
     //******************************************************************
 
-    public class Throtle : Controler
+    public class Throtle : Part
     {
         private byte throtle = 0;
 
@@ -63,7 +63,7 @@ namespace DronApp
 
     //******************************************************************
 
-    class SingleRudder : Controler
+    class SingleRudder : Part
     {
         private static byte MAX = 80;
         private byte value = 40;  // MAX/2      

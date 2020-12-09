@@ -16,6 +16,16 @@ namespace DronApp
         public static Color engineLowColor = Color.LimeGreen;
         public static Color engineHighColor = Color.Red;
         public const int engineThreshold = 200;
+        public const int safePower = 140;
+
+        //buttons
+        public const int startBtn = 0;
+        public const int readyBtn = 5;
+        public const int zBtn = 4;
+        public const int z1Btn = 6;
+        public const int safeBtn = 3;
+        public const int stopBtn = 1;
+        public const int survayBtn = 2;
 
         //rudder
         public static Brush rudderPosition = Brushes.Blue;

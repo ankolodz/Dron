@@ -10,5 +10,7 @@ namespace DronApp.ControlManager
     {
         bool init();
         void startLisiner();
+
+        void stop();
     }
 }

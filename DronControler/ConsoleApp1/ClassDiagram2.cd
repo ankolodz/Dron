@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DronApp.MessageScheduler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAABAAAAIEAAAAIAAEAAAAAAAAABgEAAAAAAgACA=</HashCode>
+      <FileName>Comunication\MessageScheduler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DronApp.MessageService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAggKAAAAIAAgAAAAAAAiAQAAAAIBEgMAAgAAAAAE=</HashCode>
+      <FileName>Comunication\MessageService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DronApp.DebugModule" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAABAAAAgAAAAAAAAAAAABAAABAA=</HashCode>
+      <FileName>FlightController\DebugMode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Gyroscope" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQABQAAAAABgAWABAAA=</HashCode>
+      <FileName>FlightController\Gyroscope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Machine" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAEAAAAigAAABIAAAAAAAQAAAAAAAAAQAAAA=</HashCode>
+      <FileName>FlightController\Machine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Component" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAkAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAACA=</HashCode>
+      <FileName>FlightController\Manager\Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.EngineManager" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IECAAAAAAIAAAEgACAAAAAAAAQAAQABAAAAAAgAACAA=</HashCode>
+      <FileName>FlightController\Manager\EngineMenager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.FlyManager" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABgAQAAEAAAAAgEAAACBAAAAQAJQEAAIAEgAgAYAAA=</HashCode>
+      <FileName>FlightController\Manager\FlyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Engine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAACAAAAAAQQAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>FlightController\Part\Parts.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DronApp.Throtle" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAQAAAAACAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>FlightController\Part\Parts.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DronApp.SingleRudder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAABAAAAACAAAAAAQAAAAAAAAAACAAAAAAAgAAAAA=</HashCode>
+      <FileName>FlightController\Part\Parts.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DronApp.Mediator" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABAQAIAARAAABAAACCABAAEAAAAAIAAAAAEIAAAAAA=</HashCode>
+      <FileName>Mediator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Parameters" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAgkAAAAAAACAAAAAAABwAAAAAJEAAAgAABA=</HashCode>
+      <FileName>Parameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.ErrorDebugMessage" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Parameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Program" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Form1" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgUQICCEAABgAAQGBIAACAAECAAAAAATaEAAkAAA=</HashCode>
+      <FileName>View\Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.SelectDialog" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACAEAAAAAgCAAAQCAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>View\SelectDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.GyroscopeDrawUtil" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAABAAAAAAIgAAEAAAAAAAAAAAAABQIgA=</HashCode>
+      <FileName>View\Utils\GyroscopeDrawUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.IcoUtils" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAEAAAAAAAAAACAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>View\Utils\IcoUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.ProgressCircleUtils" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>View\Utils\ProgressCircleUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.RudderDrawUtil" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Utils\RudderDrawUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.ControllManager.ControllerSupervisior">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ControllManager\ControllerSupervisior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.ControlManager.GamePad" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQBAAEAEAgAgCIBAMBQAAAAAgAAJAAAwAQAAAAAA=</HashCode>
+      <FileName>ControllManager\GamePadController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DronApp.ControlManager.KeybordController" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAQAAAAAAAAAAAgAAoAAAAAQAAAAAA=</HashCode>
+      <FileName>ControllManager\KeybordController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DronApp.Properties.Resources" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.Properties.Settings" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DronApp.SendMessageService" Collapsed="true">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Comunication\MessageServiceInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DronApp.ServiceState" Collapsed="true">
+    <Position X="14.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAIAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Comunication\MessageServiceInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DronApp.Addressee" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Comunication\MessageServiceInterfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DronApp.Controler" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>FlightController\Part\Controler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DronApp.ControlManager.iController">
+    <Position X="11" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAIAAAAAQAAAAAA=</HashCode>
+      <FileName>ControllManager\iController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DronApp.SenderId" Collapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAA=</HashCode>
+      <FileName>Comunication\MessageScheduler.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DronApp.State" Collapsed="true">
+    <Position X="9.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>View\Utils\IcoUtils.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

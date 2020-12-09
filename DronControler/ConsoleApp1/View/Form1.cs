@@ -7,7 +7,7 @@ namespace DronApp
 {
     public partial class Form1 : Form
     {
-        private Proxy proxy;
+        private Mediator proxy;
         GyroscopeDrawUtil gyroscopeDrawUtil;
 
 
@@ -17,7 +17,7 @@ namespace DronApp
             this.gyroscopeDrawUtil = new GyroscopeDrawUtil(gyroscop, gyroFrame);
         }  
 
-        public void setProxy(Proxy proxy)
+        public void setProxy(Mediator proxy)
         {
             this.proxy = proxy;
         }
@@ -102,6 +102,5 @@ namespace DronApp
         {
 
         }
-
     };
 }

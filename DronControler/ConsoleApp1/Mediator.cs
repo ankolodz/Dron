@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DronApp
 {
-    public class Proxy
+    public class Mediator
     {
         private SendMessageService messageService;
         private ServiceState serviceState;

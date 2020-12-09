@@ -8,18 +8,21 @@ namespace DronApp
 {
     public class Machine
     {
-        private Proxy proxy;
+        private Mediator mediator;
         public readonly EngineManager engine;
         public readonly Gyroscope gyroscope;
         public readonly FlyManager flyController;
+        public readonly AirSensorsManager airSensors;
         private Boolean readyForStart = false;
 
 
-        public Machine (Proxy proxy){
-            this.proxy = proxy;
-            engine = new EngineManager(proxy);
+        public Machine (Mediator mediator)
+        {
+            this.mediator = mediator;
+            engine = new EngineManager(mediator);
             gyroscope = new Gyroscope();
-            flyController = new FlyManager(proxy);
+            flyController = new FlyManager(mediator);
+            airSensors = new AirSensorsManager();
         }
         public void sendToReal()
         {
@@ -27,31 +30,29 @@ namespace DronApp
         }
         public void messageHandler  (byte[] message)
         {
-            Console.WriteLine(message[0]+" "+message[1]+" " +message[2] + " "+message[3] + " " + message[4] + " " + message[5] + " "+message[6]+" "+message[7]);
-
             engine.readMessage(message);
             gyroscope.readMessage(message);
+            airSensors.readMessage(message);
         }
         public void STOP()
         {
             engine.STOP();
             flyController.STOP();
             readyForStart = false;
-            proxy.setOFF();
+            mediator.setOFF();
         }
         public void start(bool power)
         {
             if (readyForStart == false && power == false)
             {
                 readyForStart = true;
-                proxy.setON();
+                mediator.setON();
                 return;
             }
             if (power == true && readyForStart == true)
             {                
                 flyController.setThrotle(45);
-            }
-        
+            }        
         }
 
         

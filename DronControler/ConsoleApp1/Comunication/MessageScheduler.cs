@@ -55,7 +55,7 @@ namespace DronApp
                 else if (lastParameterMessage && messageQueue.Count() > 0)
                     return getMessage();
             
-                return parameterMessage;
+                return getParameterMessage();
             }
         }
 

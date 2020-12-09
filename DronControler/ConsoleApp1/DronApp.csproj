@@ -82,14 +82,14 @@
     <Compile Include="Comunication\MessageScheduler.cs" />
     <Compile Include="Comunication\MessageService.cs" />
     <Compile Include="Comunication\MessageServiceInterfaces.cs" />
-    <Compile Include="Proxy.cs" />
+    <Compile Include="ControllManager\ControllerSupervisior.cs" />
+    <Compile Include="FlightController\Manager\AirSensorsManager.cs" />
+    <Compile Include="Mediator.cs" />
     <Compile Include="ControllManager\GamePadController.cs" />
     <Compile Include="ControllManager\iController.cs" />
-    <Compile Include="ControllManager\KeybordController.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="ControllManager\KeybordController.cs" />
     <Compile Include="FlightController\Gyroscope.cs" />
-    <Compile Include="FlightController\Part\Controler.cs" />
+    <Compile Include="FlightController\Part\Part.cs" />
     <Compile Include="FlightController\Machine.cs" />
     <Compile Include="FlightController\Manager\EngineMenager.cs" />
     <Compile Include="FlightController\DebugMode.cs" />
@@ -130,6 +130,11 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram4.cd" />
+    <None Include="ClassDiagram5.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -3,20 +3,20 @@ using System.Windows.Forms;
 
 namespace DronApp.ControlManager
 {
-    class KeybordController : Control, iController 
+    class KeybordController
     {
         public event System.Windows.Forms.KeyEventHandler KeyDown;
-        private Machine machine;
+        private Mediator mediator;
 
-        public KeybordController(Machine machine)
+        public KeybordController(Mediator mediator)
         {
-            this.machine = machine;
+            this.mediator = mediator;
             this.KeyDown += new KeyEventHandler(this.lisiner);
         }
 
         public bool init()
         {
-            
+
             return true;
         }
 
@@ -25,28 +25,33 @@ namespace DronApp.ControlManager
 
         }
 
-        public void lisiner (object sender, System.Windows.Forms.KeyEventArgs e)
+        public void lisiner(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.A:
-                    machine.flyController.upThrotle();
+                    mediator.getMachine().flyController.upThrotle();
                     break;
                 case Keys.Z:
-                    machine.flyController.downThrotle();
+                    mediator.getMachine().flyController.downThrotle();
                     break;
                 case Keys.D0:
-                    machine.start(false);
+                    mediator.getMachine().start(false);
                     break;
                 case Keys.Q:
-                    machine.start(true);
+                    mediator.getMachine().start(true);
                     break;
                 default:
-                    machine.STOP();
+                    mediator.getMachine().STOP();
                     break;
 
             }
             Console.WriteLine("OK");
+        }
+
+        public void stop()
+        {
+            throw new NotImplementedException();
         }
     }
 }

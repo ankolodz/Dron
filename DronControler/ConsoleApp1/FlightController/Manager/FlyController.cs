@@ -12,9 +12,9 @@ namespace DronApp
         private Throtle throtle = new Throtle();
         private SingleRudder verticalRudder;
         private SingleRudder horizontalRudder;
-        private Proxy proxy;
+        private Mediator proxy;
 
-        public FlyManager(Proxy p){
+        public FlyManager(Mediator p){
             this.proxy = p;
             this.throtle = new Throtle();
             this.verticalRudder = new SingleRudder();

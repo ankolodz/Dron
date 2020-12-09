@@ -12,7 +12,7 @@ namespace DronApp
     {
         private MessageScheduler schreduler;
         private SerialPort portCOM = new SerialPort();
-        private Proxy proxy;
+        private Mediator mediator;
         private State state { get; set; }//TODO i=ogarnij to geniuszu
         private Thread senderThread;
 
@@ -21,11 +21,11 @@ namespace DronApp
         private object usingCOM = new object();
         private bool activeFastMode = false;
 
-        public MessageService(Proxy proxy)
+        public MessageService(Mediator mediator)
         {
             this.schreduler = new MessageScheduler();
-            proxy.SetMessageService(schreduler, this);
-            this.proxy = proxy;
+            mediator.SetMessageService(schreduler, this);
+            this.mediator = mediator;
             this.portCOM = new SerialPort();
             getPortName();
         }
@@ -61,7 +61,7 @@ namespace DronApp
             catch (Exception e)
             {
                 this.state = State.error;
-                proxy.getDebug().addLog(ErrorDebugMessage.portNotReplyError);
+                mediator.getDebug().addLog(ErrorDebugMessage.portNotReplyError);
                 if (bid < 10)
                 {
                     bid++;
@@ -84,8 +84,8 @@ namespace DronApp
                 byte[] arr = readMsg();
 
                 if (controlSum(arr))
-                    proxy.getMachine().messageHandler(arr);
-                proxy.getDebug().addLog(arr);
+                    mediator.getMachine().messageHandler(arr);
+                mediator.getDebug().addLog(arr);
                 Monitor.Pulse(usingCOM);
             }                 
         }
@@ -107,11 +107,10 @@ namespace DronApp
                     while (true)
                     {
                         byte[] dataToSend = schreduler.getNextMessage();
-                        proxy.getDebug().addLog(dataToSend);
+                        mediator.getDebug().addLog(dataToSend);
                         if (!activeFastMode)
                         {
                             Thread.Sleep(Parameters.sleepSlowMessageTime);
-                           // Console.WriteLine("W!");
                         }
                             
                         portCOM.Write(dataToSend, 0, dataToSend.Length);
@@ -121,7 +120,7 @@ namespace DronApp
             }
             catch (Exception)
             {
-                proxy.getDebug().addLog(ErrorDebugMessage.lostConnection);
+                mediator.getDebug().addLog(ErrorDebugMessage.lostConnection);
                 this.close();
                 this.run();
             }
@@ -144,7 +143,7 @@ namespace DronApp
 
         public void setON()
         {
-            proxy.getDebug().addLog("========================NOWY START========================");
+            mediator.getDebug().addLog("========================NOWY START========================");
             this.activeFastMode = true;
             this.state = State.active;
         }
@@ -153,7 +152,7 @@ namespace DronApp
         {
             this.activeFastMode = false;
             this.state = State.warning;
-            proxy.getDebug().saveToFile();
+            mediator.getDebug().saveToFile();
         }
 
         public State getState()

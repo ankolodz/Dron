@@ -15,7 +15,7 @@ namespace DronApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Proxy proxy = new Proxy();
+            Mediator proxy = new Mediator();
             proxy.setDebugModule(new DebugModule());
 
             MessageService messageService = new MessageService(proxy);
