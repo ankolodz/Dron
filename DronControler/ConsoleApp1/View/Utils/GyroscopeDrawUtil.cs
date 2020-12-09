@@ -27,8 +27,8 @@ namespace DronApp
 
         public void drawGyroscope(Gyroscope gyroscopeParts)
         {
-            int x = gyroscopeParts.getX();
-            int y = gyroscopeParts.getY();
+            int x = (int)gyroscopeParts.getX();
+            int y = (int)gyroscopeParts.getY();
 
             y = Math.Min(y, 20);
             y = Math.Max(y, -20);

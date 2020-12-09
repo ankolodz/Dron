@@ -7,6 +7,7 @@ namespace DronApp
     public class IcoUtils
     {
         public static Color okColor = ColorTranslator.FromHtml("#A5DF00");
+        public static Color autoColor = ColorTranslator.FromHtml("#0066ff");
         public static Color warningColor = ColorTranslator.FromHtml("#FACC2E");
         public static Color errorColor = ColorTranslator.FromHtml("#DF013A");
 
@@ -20,6 +21,9 @@ namespace DronApp
                 case State.warning:
                     icon.BackColor = warningColor;
                     break;
+                case State.auto:
+                    icon.BackColor = autoColor;
+                    break;
                 case State.error:
                     icon.BackColor = errorColor;
                     break;
@@ -30,6 +34,7 @@ namespace DronApp
     public enum State
     {
         active,
+        auto,
         warning,
         error
     }

@@ -7,7 +7,7 @@ namespace DronApp
 {
     public partial class Form1 : Form
     {
-        private Mediator proxy;
+        private Mediator mediator;
         GyroscopeDrawUtil gyroscopeDrawUtil;
 
 
@@ -17,42 +17,50 @@ namespace DronApp
             this.gyroscopeDrawUtil = new GyroscopeDrawUtil(gyroscop, gyroFrame);
         }  
 
-        public void setProxy(Mediator proxy)
+        public void setProxy(Mediator mediator)
         {
-            this.proxy = proxy;
+            this.mediator = mediator;
         }
 
         //update
         private void refresh(object sender, EventArgs e)
         {
-            gyroscopeDrawUtil.drawGyroscope(proxy.getMachine().gyroscope);
-            updateThrotle(proxy.getMachine().flyController.getThrotle());
-            updateEngine(proxy.getMachine().engine.getEngineState());
-            updaterRudder(proxy.getMachine().flyController.getHorizontalDirection(), proxy.getMachine().flyController.getVerticalDirection());
-            connection(proxy.getState());
-            proxy.getMachine().sendToReal();
-            update.Interval = proxy.getSleepTime();
+            gyroscopeDrawUtil.drawGyroscope(mediator.getMachine().gyroscope);
+            updateThrotle(mediator.getMachine().flyController.getThrotle());
+            updateEngine(mediator.getMachine().engine.getEngineState());
+            updaterRudder(mediator.getMachine().flyController.getHorizontalDirection(), mediator.getMachine().flyController.getVerticalDirection());
+            updateAirSensor(mediator.getMachine().airSensors);
+            connection(mediator.getState());
+            mediator.getMachine().sendToReal();
+            update.Interval = mediator.getSleepTime();
             Refresh();
 
+        }
+
+        private void updateAirSensor(AirSensorsManager airSensors)
+        {
+            this.PM10.Text = airSensors.getPM10().ToString();
+            this.PM25.Text = airSensors.getPM25().ToString();
+            this.temp.Text = airSensors.getTemp().ToString();
         }
 
         private void ThrotleHendler(object sender, System.Windows.Forms.KeyEventArgs e) {
             switch (e.KeyCode)
             {
                 case Keys.A:
-                    proxy.getMachine().flyController.upThrotle();
+                    mediator.getMachine().flyController.upThrotle();
                     break;
                 case Keys.Z:
-                    proxy.getMachine().flyController.downThrotle();
+                    mediator.getMachine().flyController.downThrotle();
                     break;
                 case Keys.D1:
-                    proxy.getMachine().start(false);
+                    mediator.getMachine().start(false);
                     break;
                 case Keys.Q:
-                    proxy.getMachine().start(true);
+                    mediator.getMachine().start(true);
                     break;
                 default:
-                    proxy.getMachine().STOP();
+                    mediator.getMachine().STOP();
                     break;
 
             }
@@ -94,13 +102,32 @@ namespace DronApp
 
         private void PanicButton_Click(object sender, EventArgs e)
         {
-           proxy.getMachine().STOP();
+           mediator.getMachine().STOP();
         }
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.mediator.getMachine().refreshAirSensor();
+        }
+
+        private void autoAirBtnClick(object sender, EventArgs e)
+        {
+            this.airTimer.Enabled = !this.airTimer.Enabled;
+            State state = this.airTimer.Enabled
+                ? State.auto
+                : State.active;
+            IcoUtils.setState(sensorIco, state);
+        }
+
+        private void singleRefreshAirSensorBtn(object sender, EventArgs e)
+        {
+            this.mediator.getMachine().refreshAirSensor();
         }
     };
 }

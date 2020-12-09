@@ -32,14 +32,17 @@ namespace DronApp
 
         public void saveToFile()
         {
-            //StreamWriter SW = File.AppendText("./log" + DateTime.Now + ".txt");
 
-            //foreach(String s in queue)
-            //{
-            //    SW.WriteLine(s);
-            //}
-            //SW.Close();
-            //queue.Clear();
+            string timestamp = DateTime.UtcNow.ToString("yyyy-MM-dd HH-mm",
+                                CultureInfo.InvariantCulture);
+            StreamWriter SW = File.AppendText("./log" + timestamp + ".txt");
+
+            foreach (String s in queue)
+            {
+                SW.WriteLine(s);
+            }
+            SW.Close();
+            queue.Clear();
         }
 
 

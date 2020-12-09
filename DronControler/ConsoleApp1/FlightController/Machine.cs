@@ -22,7 +22,7 @@ namespace DronApp
             engine = new EngineManager(mediator);
             gyroscope = new Gyroscope();
             flyController = new FlyManager(mediator);
-            airSensors = new AirSensorsManager();
+            airSensors = new AirSensorsManager(mediator);
         }
         public void sendToReal()
         {
@@ -30,9 +30,13 @@ namespace DronApp
         }
         public void messageHandler  (byte[] message)
         {
-            engine.readMessage(message);
-            gyroscope.readMessage(message);
-            airSensors.readMessage(message);
+            if(message[0] == 1){
+                engine.readMessage(message);
+                gyroscope.readMessage(message);
+            } else {          
+                airSensors.readMessage(message);
+            }
+            
         }
         public void STOP()
         {
@@ -55,6 +59,9 @@ namespace DronApp
             }        
         }
 
-        
+        public void refreshAirSensor()
+        {
+            this.airSensors.refresh();
+        }
     }
 }

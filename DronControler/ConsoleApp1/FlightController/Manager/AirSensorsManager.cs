@@ -9,31 +9,54 @@ namespace DronApp
 {
     public class AirSensorsManager : Component
     {
-        private bool test;
+        private byte type = 129;
+        private int PM25 = 0;
+        private int PM10 = 0;
+        private float temp = 0;
+        private Mediator mediator;
         public override byte getType()
         {
-            throw new NotImplementedException();
+            return type;
+        }
+
+        public AirSensorsManager(Mediator mediator)
+        {
+            this.mediator = mediator;
         }
 
         public override void readMessage(byte[] message)
         {
-            throw new NotImplementedException();
+           PM10 = message[2];
+           PM25 = message[3];
+           setTemp(message[1]);
+           this.mediator.getDebug().addLog(message);
+        
         }
 
         public float getPM10() {
-            throw new NotImplementedException();
+            return PM10;
         }
 
-        public float getTemp() { throw new NotImplementedException(); }
+        public float getPM25()
+        {
+            return PM25;
+        }
+
+        public float getTemp() { return temp; }
 
         public float getGPSlongitude() { throw new NotImplementedException(); }
         public float getGPSlatitude() { throw new NotImplementedException(); }
 
-        private void setPM10(byte[] val) { }
-
-        private void setTemp(byte[] val) { }
+        private void setTemp(byte val) {
+            temp = val / 4 - 10;
+                }
 
         private void getGPSlongitude(byte[] val) { }
         private void getGPSlatitude(byte[] val) { }
+
+        internal void refresh()
+        {
+            base.SendComend(mediator, 0, 0, 0, 0);
+        }
     }
 }

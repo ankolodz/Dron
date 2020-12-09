@@ -12,10 +12,10 @@ namespace DronApp
         private Throtle throtle = new Throtle();
         private SingleRudder verticalRudder;
         private SingleRudder horizontalRudder;
-        private Mediator proxy;
+        private Mediator mediator;
 
         public FlyManager(Mediator p){
-            this.proxy = p;
+            this.mediator = p;
             this.throtle = new Throtle();
             this.verticalRudder = new SingleRudder();
             this.horizontalRudder = new SingleRudder();
@@ -82,7 +82,7 @@ namespace DronApp
 
 
         public void sendFlyController(){
-            base.SendComend(proxy, throtle.getState(), verticalRudder.getState(), horizontalRudder.getState(), 0);
+            base.SendComend(mediator, throtle.getState(), verticalRudder.getState(), horizontalRudder.getState(), 0);
         }
 
         public void STOP(){

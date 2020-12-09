@@ -15,8 +15,8 @@ namespace DronApp.ControlManager
         private Mediator mediator;
 
         private Thread t;
-        private static int neutrallRudderPosition = 80;
-        private int accurancyThrotle = 10, accurancyRudder = 80;
+        private static int neutrallRudderPosition = 70;
+        private int accurancyThrotle = 10, accurancyRudder = 100;
         private int oX, oY, sX, sY, lastDirect;
         private int staticX = 0, staticY = 0;
 
@@ -110,6 +110,7 @@ namespace DronApp.ControlManager
             if (oY != convert(state.RotationZ, accurancyRudder, neutrallRudderPosition))
             {
                 oY = convert(state.RotationZ, accurancyRudder, neutrallRudderPosition);
+
                 machine.flyController.setVertical(oY + staticY);
             }
         }
@@ -177,10 +178,6 @@ namespace DronApp.ControlManager
             int one = 65535 / accurancy;
             return zeros + val / one;
         }
-
-
     }
-
-
 
 }

@@ -20,24 +20,24 @@ namespace DronApp
 
         public override void readMessage(byte[] message)
         {
-            y = message[4];
-            x = message[5];
-            z = message[6];
+            y = message[5];
+            x = message[6];
+            z = message[7];
         }
 
-        public int getX()
+        public float getX()
         {
-            return x - Parameters.zeroGyroMaping;
+            return (x - Parameters.zeroGyroMaping)/2;
         }
 
-        public int getY()
+        public float getY()
         {
-            return y - Parameters.zeroGyroMaping;
+            return (y - Parameters.zeroGyroMaping)/2;
         }
 
         public int getZ()
         {
-            return z - Parameters.zeroGyroMaping;
+            return z - Parameters.zeroGyroMaping/2;
         }
     };
 }
